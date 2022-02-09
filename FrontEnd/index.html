@@ -7,8 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>FUNCIONA!!</h1>
-    <h2>Prueba2</h2>
-    <script src="./script.js"></script>
+    <form>
+        <label for="width">Anchura del recipiente</label><br>
+        <input type="number" name="width" id="width"><br>
+        <label for="height">Altura del recipiente</label><br>
+        <input type="number" name="height" id="height"><br>
+        <label for="measure">Tipo de unidad:</label><br>
+        <input type="radio" name="measure" id="measure" value="cm"> 
+        <label for="cm">CM</label><br>
+        <input type="radio" name="measure" id="measure" value="px"> 
+        <label for="px">PX</label><br>
+    </form>
+    <button>Generar lienzo</button>
+    <!-- <script src="./script.js"></script> -->
 </body>
 </html>
