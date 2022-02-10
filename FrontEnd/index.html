@@ -12,15 +12,17 @@
         <div id="inferior">
             <form>
                 <label for="width">Anchura del recipiente (en píxeles):</label><br>
-                <input type="number" name="width" id="width"><br>
+                <input type="number" name="width" id="width" step="50" min="500" max="1000"><br>
                 <label for="height">Altura del recipiente (en píxeles):</label><br>
-                <input type="number" name="height" id="height"><br>
+                <input type="number" name="height" id="height" step="50" min="500" max="1000"><br>
             </form>
             <button onclick="generarLienzo()">Generar lienzo</button>
         </div>
-        <canvas id="lienzo">
-            <div></div>
-        </canvas>
+        <div>
+            <div id="lienzo">
+                <div id="divInterno"></div>
+            </div>
+        </div>
     </div>
     <!-- <script src="./script.js"></script> -->
     <script src="./generarLienzo.js"></script>

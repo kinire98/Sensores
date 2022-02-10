@@ -1,11 +1,24 @@
+*{
+    text-align: center;
+}
 #lienzo {
     height: 0;
     width: 0;
     border: 0;
-    position: absolute;
+    position: relative;
+    align-items: center;
+    z-index: 1;
 }
-canvas > div {
-    height: 5px;
-    width: 5px;
-    background: black;
+#divInterno {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
 }
