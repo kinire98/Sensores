@@ -12,15 +12,29 @@
         <div id="inferior">
             <form>
                 <label for="width">Anchura del recipiente (en píxeles):</label><br>
-                <input type="number" name="width" id="width" step="50" min="500" max="1000"><br>
+                <input type="number" name="width" id="width" step="50" min="500" max="900"><br>
                 <label for="height">Altura del recipiente (en píxeles):</label><br>
-                <input type="number" name="height" id="height" step="50" min="500" max="1000"><br>
+                <input type="number" name="height" id="height" step="50" min="500" max="900"><br>
             </form>
             <button onclick="generarLienzo()">Generar lienzo</button>
         </div>
-        <div>
-            <div id="lienzo">
-                <div id="divInterno"></div>
+        <div id="general">
+            <div id="contenedor">
+                <div id="lienzo">
+                    <div id="divInterno"></div>
+                </div>
+                <div id="Instrucciones">
+                    <p>
+                        Para mover el punto <br>
+                        <li>
+                            <ul>W -> Arriba</ul><br>
+                            <ul>A -> Izquierda</ul><br>
+                            <ul>S -> Derecha</ul><br>
+                            <ul>D -> Abajo</ul><br>
+                            <ul>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</ul>
+                        </li>
+                    </p>
+                </div>
             </div>
         </div>
     </div>

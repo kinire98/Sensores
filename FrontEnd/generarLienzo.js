@@ -8,6 +8,7 @@ const generarLienzo = () => {
         document.getElementById('lienzo').style.height = altura +'px'
         document.getElementById('lienzo').style.border = '5px solid black'
         document.getElementById('inferior').style.display = 'none';
+        document.getElementById('general').style.display = 'block';
         document.getElementById('divInterno').style.display = 'block';
         document.getElementById('divInterno').style.background = '#000'
         document.getElementById('divInterno').style.height = '5px';

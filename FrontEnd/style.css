@@ -5,9 +5,10 @@
     height: 0;
     width: 0;
     border: 0;
-    position: relative;
+    position: absolute;
     align-items: center;
     z-index: 1;
+    right: 55vh;
 }
 #divInterno {
     height: 0;
@@ -21,4 +22,22 @@
     bottom: 0;
     right: 0;
     z-index: 2;
+}
+#general {
+    display: none;
+    text-align: center;
+}
+#Instrucciones {
+    border: 5px solid #000;
+    text-align: left;
+    right: 34.2vh;
+    top: 25%;
+    position: absolute;
+    display: inline;
+    list-style-type: none;
+    padding: 50px;
+}
+#contenedor {
+    position: absolute;
+    right: 10px;
 }
