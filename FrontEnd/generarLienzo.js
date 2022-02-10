@@ -2,7 +2,7 @@ const generarLienzo = () => {
     let anchura = parseInt(document.getElementById('width').value);
     let altura = parseInt(document.getElementById('height').value);
     if (!anchura || !altura) {
-        alert('Introduce los valores de altura YA ')
+        alert('Introduce los valores de altura Y altura ')
     } else {
         document.getElementById('lienzo').style.width = anchura + 'px'
         document.getElementById('lienzo').style.height = altura +'px'
