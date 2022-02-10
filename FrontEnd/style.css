@@ -4,3 +4,8 @@
     border: 0;
     position: absolute;
 }
+canvas > div {
+    height: 5px;
+    width: 5px;
+    background: black;
+}
