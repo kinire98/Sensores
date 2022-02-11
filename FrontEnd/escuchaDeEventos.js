@@ -1,6 +1,6 @@
 let comprobarDistancia = false;
 let cadenaDeTxtBDD = '';
-setInterval(() => {addEventListener('keydown', () => {
+setInterval(() => {addEventListener('keypress', () => {
     let tecla = event.key;
     let arriba = parseFloat(document.getElementById('divInterno').style.top);
     let izquierda = parseFloat(document.getElementById('divInterno').style.left);
