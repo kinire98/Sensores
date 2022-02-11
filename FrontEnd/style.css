@@ -1,11 +1,48 @@
+*{
+    text-align: center;
+}
 #lienzo {
     height: 0;
     width: 0;
     border: 0;
-    position: absolute;
+    position: relative;
+    align-items: center;
+    z-index: 1;
+    right: 100%;
+    top: 5%;
+    /*
+    Los estilos de los div con el movimiento y las instrucción hay que cambiarlos
+    y cambiar su tamaño dinámicamente
+    */
 }
-canvas > div {
-    height: 5px;
-    width: 5px;
-    background: black;
+#divInterno {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+#general {
+    display: none;
+    text-align: center;
+}
+#Instrucciones {
+    border: 5px solid #000;
+    text-align: left;
+    right: 50%;
+    top: 25%;
+    position: absolute;
+    display: inline;
+    list-style-type: none;
+    padding: 50px;
+}
+#contenedor {
+    position: absolute;
+    right: 10px;
 }

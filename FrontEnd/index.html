@@ -12,19 +12,35 @@
         <div id="inferior">
             <form>
                 <label for="width">Anchura del recipiente (en píxeles):</label><br>
-                <input type="number" name="width" id="width"><br>
+                <input type="number" name="width" id="width" step="50" min="500" max="900"><br>
                 <label for="height">Altura del recipiente (en píxeles):</label><br>
-                <input type="number" name="height" id="height"><br>
+                <input type="number" name="height" id="height" step="50" min="500" max="900"><br>
             </form>
             <button onclick="generarLienzo()">Generar lienzo</button>
         </div>
-        <canvas id="lienzo">
-            <div></div>
-        </canvas>
+        <div id="general">
+            <div id="contenedor">
+                <div id="lienzo">
+                    <div id="divInterno"></div>
+                </div>
+                <div id="Instrucciones">
+                    <p>
+                        Para mover el punto <br>
+                        <li>
+                            <ul>W -> Arriba</ul><br>
+                            <ul>A -> Izquierda</ul><br>
+                            <ul>S -> Derecha</ul><br>
+                            <ul>D -> Abajo</ul><br>
+                            <ul>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</ul>
+                        </li>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- <script src="./script.js"></script> -->
-    <script src="generarLienzo.js"></script>
-    <script src="dibujarCanvas.js"></script>
-    <script src="escuchaDeEventos.js"></script>
+    <script src="./generarLienzo.js"></script>
+    <script src="./dibujarCanvas.js"></script>
+    <script src="./escuchaDeEventos.js"></script>
 </body>
 </html>
