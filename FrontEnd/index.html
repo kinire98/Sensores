@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h1>FUNCIONA!!</h1>
-    <h2>Prueba2</h2>
-    <script src="./script.js"></script>
+    <div id="suoerior">
+        <div id="inferior">
+            <form>
+                <label for="width">Anchura del recipiente (en píxeles):</label><br>
+                <input type="number" name="width" id="width"><br>
+                <label for="height">Altura del recipiente (en píxeles):</label><br>
+                <input type="number" name="height" id="height"><br>
+            </form>
+            <button onclick="generarLienzo()">Generar lienzo</button>
+        </div>
+        <canvas id="lienzo">
+            <div></div>
+        </canvas>
+    </div>
+    <!-- <script src="./script.js"></script> -->
+    <script src="generarLienzo.js"></script>
+    <script src="dibujarCanvas.js"></script>
+    <script src="escuchaDeEventos.js"></script>
 </body>
 </html>
