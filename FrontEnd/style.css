@@ -49,5 +49,11 @@
     right: 10px;
 }
 li {
-    list-style-type:square; ;
+    list-style-type:square; 
+}
+b {
+    list-style-type: none;
+}
+i {
+    list-style-type: square;
 }

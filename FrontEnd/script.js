@@ -75,7 +75,7 @@ function media (x1,x2,x3,x4) { //Esta función calcula la media de las coordenad
     let media2 = x1 + x2 + x3 + x4;
     return media2/4
 }
-function repetir () {
+function repetir () {//Esta función permite cambiar el tamaño del lienzo para poder volver a tomar otra medición
     document.getElementById('inferior').style.display = 'block';
     document.getElementById('general').style.display = 'none';
     document.getElementById('divInterno').style.display = 'none';
@@ -89,7 +89,20 @@ function repetir () {
                 <li>d -> Abajo</li><br>
                 <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
             </ul>
-            `
+            `;
+}
+function cambiarPosicion () { //Esta función permite
+    comprobarDistancia = false;
+    document.getElementById('Instrucciones').innerHTML = `
+            Para mover el punto <br>
+            <ul>
+                <li>w-> Arriba</li><br>
+                <li>a -> Izquierda</li><br>
+                <li>s -> Derecha</li><br>
+                <li>d -> Abajo</li><br>
+                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+            </ul>
+            `;
 }
 //Detecta que se presionen las teclas, y cuando se presione enter
 addEventListener('keypress', () => {
@@ -164,13 +177,15 @@ addEventListener('keypress', () => {
 
 
             let mediaX = media(xAbajo,xArriba,xDcha,xIzda);//Estas líneas hacen una media con los resultados obtenidos, para así si hay alguna discordancia entre medidas poder solucionar
-            let mediaY = media (yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
+            mediaX = Number(mediaX.toFixed(2))
+            let mediaY = media(yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
+            mediaY = Number(mediaY.toFixed(2))
             //El procedimiento de hacer la media está más enfocado a los sensores, ya que estos pueden cometer cierto error, sin embargo en el navegador es prácticamente imposible que surja
 
 
             let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
-            let beta = Math.asin (mediaY/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
-            let gamma = Math.asin (mediaX/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
+            let beta = Math.asin ((anchura-mediaX)/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
+            let gamma = Math.asin ((altura-mediaY)/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
             let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
 
             alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
@@ -196,8 +211,36 @@ addEventListener('keypress', () => {
                     <li><b>Sensor arriba derecha:</b></li>
                     <li>(${sensorxy}px,${delta}º)</li>
                 </ul> <br>
-                <button onclick="repetir()">Repetir</button>
-            `
+                <button onclick="repetir()">Cambiar medidas lienzo</button>
+                <button onclick="cambiarPosicion()">Cambiar posición</button>
+            `;
+            let datos = {
+                'longitud1': sensor00,
+                'longitud2': sensorx0,
+                'longitud3': sensor0y,
+                'longitud4': sensorxy,
+                'movimientos': cadenaDeTxtBDD,
+                'angulo1': alfa,
+                'angulo2': beta,
+                'angulo3': gamma,
+                'angulo4': delta,
+                'abscisa': mediaX,
+                'oordenada': mediaY,
+                'referencia': referencia
+            
+            };
+            var url = '../BackEnd/agregarBBDD.php';
+                $.ajax({
+                    data: datos,
+                    url: url,
+                    type: 'post',
+                    success:  function (response) {
+                        console.log(response); // Imprimir respuesta del archivo
+                    },
+                    error: function (error) {
+                        console.log(error); // Imprimir respuesta de error
+                    }
+            });
         }
     }
 })
