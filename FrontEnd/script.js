@@ -142,6 +142,7 @@ addEventListener('keypress', () => {
     if (tecla == 'Enter' && !comprobarDistancia) {
         if (document.getElementById('inferior').style.display == 'none') {
             comprobarDistancia = true; //Para que no se pulse dos veces el enter
+            let referencia = document.getElementById('ref').value;
             //Simulación del sensor
             let abscisas = parseFloat(document.getElementById('divInterno').style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
             let oordenadasOpuestas = parseFloat(document.getElementById('divInterno').style.top);//para que más tarde al pasarlo a los sensores el código pueda seguir 
