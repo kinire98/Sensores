@@ -1,5 +1,7 @@
 *{
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 #lienzo {
     height: 0;
@@ -8,8 +10,8 @@
     position: relative;
     align-items: center;
     z-index: 1;
-    right: 100%;
-    top: 5%;
+    right: 50%;
+    top: auto;
     /*
     Los estilos de los div con el movimiento y las instrucciones hay que cambiarlos
     y cambiar su tamaño dinámicamente
@@ -35,8 +37,8 @@
 #Instrucciones {
     border: 5px solid #000;
     text-align: left;
-    right: 50%;
-    top: 25%;
+    right: -10px;
+    top: 275px;
     position: absolute;
     display: inline;
     list-style-type: square;

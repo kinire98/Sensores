@@ -7,6 +7,8 @@ const generarLienzo = () => {
         alert('Introduce los valores de altura Y altura ')
     } else if (altura < 500 || altura > 1000 || anchura < 500 || anchura > 1000){//Aquí se comprueba que los valores introducidos estén entre 500 y 1000
         alert('Tanto la altura como la anchura tienen que estar entre 500 y 1000')
+    } else if ((altura % 50 != 0) || (anchura % 50 != 0)) { //Comprueba que el número sea múltiplo de 50
+        alert ('Introduce un número multiplo de 50');
     } else {//Y aquí se otorgan los estilos que hacen que el lienzo y el punto sean visibles
         document.getElementById('lienzo').style.width = anchura + 'px'
         document.getElementById('lienzo').style.height = altura +'px'
@@ -20,6 +22,53 @@ const generarLienzo = () => {
         document.getElementById('divInterno').style.border = '1px solid #000';
         document.getElementById('divInterno').style.top = altura/2 + 'px'
         document.getElementById('divInterno').style.left = anchura/2 + 'px';
+        switch (anchura) {
+            case 500: case 550:
+                document.getElementById('lienzo').style.right = '145%';
+                break;
+            case 600:case 650:
+                document.getElementById('lienzo').style.right = '115%';
+                break;
+            case 700:case 750:
+                document.getElementById('lienzo').style.right = '82.5%';
+                break;
+            case 800: 
+                document.getElementById('lienzo').style.right = '72.5%';
+                break;
+            case 850:
+                document.getElementById('lienzo').style.right = '65%';
+                break;
+            case 900:
+                document.getElementById('lienzo').style.right = '56.5%';
+                break;
+            default:
+                document.getElementById('lienzo').style.right = 'auto';
+                break;
+        }
+        console.log(anchura,altura)
+        switch (altura) {
+            case 500: case 550:
+                document.getElementById('lienzo').style.top = '155px';
+                break;
+            case 600: case 650:
+                document.getElementById('lienzo').style.top = '125px';
+            break;
+            case 700: case 750:
+                document.getElementById('lienzo').style.top = '80px';
+                break;
+            case 800:
+                document.getElementById('lienzo').style.top = '50px';
+                break;
+            case 850:
+                document.getElementById('lienzo').style.top = '35px';
+                break;
+            case 900:
+                document.getElementById('lienzo').style.top = '10px';
+                break;
+            default:
+                document.getElementById('lienzo').style.top = 'auto';
+                break;
+        }
     }
 }
 function media (x1,x2,x3,x4) { //Esta función calcula la media de las coordenadas (Se explica más abajo)
@@ -123,7 +172,7 @@ addEventListener('keypress', () => {
             let beta = Math.asin (mediaY/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
             let gamma = Math.asin (mediaX/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
             let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
-            console.log(alfa,beta,gamma,delta);
+
             alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
             beta = (180*beta)/Math.PI;//teniendo en cuenta que 180ª grados son PI radianes
             gamma = (180*gamma)/Math.PI;//Con esto en mente estas líneas son dicha regla de tres
@@ -132,6 +181,7 @@ addEventListener('keypress', () => {
             beta = Number(beta.toFixed(2));
             gamma = Number(gamma.toFixed(2));
             delta = Number(delta.toFixed(2));
+            document.getElementById('Instrucciones').style.textAlign = 'center';
             document.getElementById('Instrucciones').innerHTML = `
                 <ul>
                     <li><i><b>Coordenadas:</b></i></li>
