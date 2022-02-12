@@ -23,7 +23,7 @@
 
 
         <div>
-            <select name="movimientoBBDD">
+            <select name="movimientoBBDD" id="movimientoBBDD">
                 <?php
                     $sql = "SELECT * FROM sensores";
                     $result = $conn->query($sql);
@@ -100,7 +100,10 @@
     <script src="./dibujarCanvas.js"></script>
     <script src="./escuchaDeEventos.js"></script>
     <script src="../jquery.min.js"></script>
-    <script src="./movimientoSelect.js"></script>
+    <script>
+        var lista_movimientosJS = <?php echo json_encode($lista_movimientos); ?>;
+    </script>
+    <script src="movimientoSelect.js"></script>
 
 </body>
 </html>
