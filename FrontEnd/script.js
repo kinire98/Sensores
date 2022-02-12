@@ -26,6 +26,22 @@ function media (x1,x2,x3,x4) { //Esta función calcula la media de las coordenad
     let media2 = x1 + x2 + x3 + x4;
     return media2/4
 }
+function repetir () {
+    document.getElementById('inferior').style.display = 'block';
+    document.getElementById('general').style.display = 'none';
+    document.getElementById('divInterno').style.display = 'none';
+    comprobarDistancia = false;
+    document.getElementById('Instrucciones').innerHTML = `
+            Para mover el punto <br>
+            <ul>
+                <li>w-> Arriba</li><br>
+                <li>a -> Izquierda</li><br>
+                <li>s -> Derecha</li><br>
+                <li>d -> Abajo</li><br>
+                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+            </ul>
+            `
+}
 //Detecta que se presionen las teclas, y cuando se presione enter
 addEventListener('keypress', () => {
     let tecla = event.key;//Detecta que tecla se a pulsado. el event.key devuelve una cadena de texto que indica la tecla pulsada. Aunque 'event' esté deprecado no encontré ningund alternativa para su uso
@@ -58,6 +74,7 @@ addEventListener('keypress', () => {
         if (izquierda <= (anchura - 10.5)) {
             document.getElementById('divInterno').style.left = izquierda + 10  +'px';
             cadenaDeTxtBDD += 'd';
+            
         }
     }
     if (tecla == 'Enter' && !comprobarDistancia) {
@@ -103,10 +120,10 @@ addEventListener('keypress', () => {
 
 
             let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
-            let beta = Math.asin (mediaX/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
-            let gamma = Math.asin (mediaY/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
+            let beta = Math.asin (mediaY/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
+            let gamma = Math.asin (mediaX/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
             let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
-
+            console.log(alfa,beta,gamma,delta);
             alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
             beta = (180*beta)/Math.PI;//teniendo en cuenta que 180ª grados son PI radianes
             gamma = (180*gamma)/Math.PI;//Con esto en mente estas líneas son dicha regla de tres
@@ -115,7 +132,22 @@ addEventListener('keypress', () => {
             beta = Number(beta.toFixed(2));
             gamma = Number(gamma.toFixed(2));
             delta = Number(delta.toFixed(2));
-            console.log(alfa,beta,gamma,delta)
+            document.getElementById('Instrucciones').innerHTML = `
+                <ul>
+                    <li><i><b>Coordenadas:</b></i></li>
+                    <li>(${mediaX}px,${mediaY}px)</li>
+                    <li><i><b>Coordenadas polares:</b></i></li>
+                    <li><b>Sensor abajo izquierda:</b></li>
+                    <li>(${sensor00}px,${alfa}º)</li>
+                    <li><b>Sensor abajo derecha:</b></li>
+                    <li>(${sensorx0}px,${beta}º)</li>
+                    <li><b>Sensor arriba izquierda:</b></li>
+                    <li>(${sensor0y}px,${gamma}º)</li>
+                    <li><b>Sensor arriba derecha:</b></li>
+                    <li>(${sensorxy}px,${delta}º)</li>
+                </ul> <br>
+                <button onclick="repetir()">Repetir</button>
+            `
         }
     }
 })
