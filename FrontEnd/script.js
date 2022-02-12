@@ -230,7 +230,7 @@ addEventListener('keypress', () => {
                 'referencia': referencia
             
             };
-            var url = '../BackEnd/agregarBBDD.php';
+            let url = '../BackEnd/agregarBBDD.php';
                 $.ajax({
                     data: datos,
                     url: url,
