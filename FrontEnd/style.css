@@ -51,7 +51,7 @@
 li {
     list-style-type:square; 
 }
-b {
+.quitarMarcador {
     list-style-type: none;
 }
 i {
