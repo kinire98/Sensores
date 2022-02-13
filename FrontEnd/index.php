@@ -50,6 +50,9 @@
                             $lista_abscisa = [];
                             $lista_oordenada = [];
 
+                            $lista_altura = [];
+                            $lista_anchura = [];
+
                             $lista_referencia = [];
 
                             while($row = $result->fetch_assoc()){
@@ -69,6 +72,9 @@
                                 array_push($lista_abscisa, $row['abscisa']);
                                 array_push($lista_oordenada, $row['oordenada']);
 
+                                array_push($lista_altura, $row['altura']);
+                                array_push($lista_anchura, $row['anchura']);
+
                                 array_push($lista_referencia, $row['referencia']);
 
                                 $referencia = $row['referencia'];
@@ -87,7 +93,8 @@
                 <div id="lienzo">
                     <div id="divInterno"></div>
                 </div>
-                <div id="Instrucciones">
+                
+                <div id="Instrucciones" style="margin-top: 600px;">
                     <p>
                         Para mover el punto <br>
                         <ul>
@@ -107,6 +114,9 @@
     <script>
         var lista_movimientosJS = <?php echo json_encode($lista_movimientos); ?>;
         var lista_referenciaJS = <?php echo json_encode($lista_referencia); ?>;
+
+        var lista_alturaJS = <?php echo json_encode($lista_altura); ?>;
+        var lista_anchuraJS = <?php echo json_encode($lista_anchura); ?>;
     </script>
     <script src="movimientoSelect.js"></script>
 </body>
