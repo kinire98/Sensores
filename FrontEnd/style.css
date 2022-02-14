@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 *{
+    font-family: 'Lato', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
+    background:#072227 ;
 }
 #lienzo {
     height: 0;
@@ -10,7 +13,7 @@
     position: relative;
     align-items: center;
     z-index: 1;
-    right: 50%;
+    right: auto;
     top: auto;
     /*
     Los estilos de los div con el movimiento y las instrucciones hay que cambiarlos
@@ -29,16 +32,16 @@
     bottom: 0;
     right: 0;
     z-index: 2;
+    background: #072227;
 }
 #general {
     display: none;
     text-align: center;
 }
 #Instrucciones {
-    border: 5px solid #000;
     text-align: left;
     right: -10px;
-    top: 275px;
+    top: 225px;
     position: absolute;
     display: inline;
     list-style-type: square;
@@ -56,4 +59,84 @@ li {
 }
 i {
     list-style-type: square;
+}
+#inferior {
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    bottom:30%;
+    height: 30%;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+    
+}
+#superior {
+    position: relative;
+    margin: 0;
+}
+form,button {
+    border: 5px solid black;
+    border-collapse: collapse;
+}
+button {
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 25px;
+    background: #4FBDBA;
+}
+button:hover {
+    background:#072227;
+    color: #4FBDBA;
+    cursor: pointer;
+}
+form {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 25px;
+    background: #24A19C;
+}
+input {
+    font-size: 25px;
+    background: #4FBDBA;
+    color: #072227;
+}
+input:hover {
+    background:#072227;
+    color: #4FBDBA;
+    cursor: pointer;
+}
+label {
+    background: #24A19C;
+    color: #072227;
+    font-weight: 900;
+}
+label:hover,li:hover,p:hover {
+    background:#072227;
+    color: #4FBDBA;
+    cursor: pointer;
+}
+#lienzo {
+    background: #24A19C;
+}
+#instrucciones,p,ul,li,b,i {
+    background: #24A19C;
+    color: #072227;
+}
+.botonesPanel {
+    padding: 15px;
+    font-size: inherit;
+}
+#instrucciones {
+    margin: 0;
+    border: 0;
+}
+ul {
+    padding: 15%;
+}
+.negrita {
+    font-style: italic;
+    font-weight: 900;
 }
