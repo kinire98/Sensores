@@ -11,10 +11,10 @@
     width: 0;
     border: 0;
     position: relative;
-    align-items: center;
     z-index: 1;
     right: auto;
     top: auto;
+    background: #24A19C;
     /*
     Los estilos de los div con el movimiento y las instrucciones hay que cambiarlos
     y cambiar su tamaño dinámicamente
@@ -27,12 +27,62 @@
     border:0;
     position: absolute;
     display: none;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    top:auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
     z-index: 2;
+}
+#divInterno2 {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: 3;
+}
+#divInterno3 {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: 4;
+}
+#divInterno4 {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: 5;
+}
+.divInternoo{
     background: #072227;
+}
+.divInternoo2 {
+    background:#03045E;
+}
+.divInternoo3 {
+    background:#F1D00A;
+}
+.divInternoo4 {
+    background:#ED5EDD;
 }
 #general {
     display: none;
@@ -41,7 +91,7 @@
 #Instrucciones {
     text-align: left;
     right: -10px;
-    top: 225px;
+    top: 50px;
     position: absolute;
     display: inline;
     list-style-type: square;
@@ -118,9 +168,6 @@ label:hover,li:hover,p:hover {
     color: #4FBDBA;
     cursor: pointer;
 }
-#lienzo {
-    background: #24A19C;
-}
 #instrucciones,p,ul,li,b,i {
     background: #24A19C;
     color: #072227;
@@ -139,4 +186,10 @@ ul {
 .negrita {
     font-style: italic;
     font-weight: 900;
+}
+.botonEspecial {
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left: 95px;
+    padding-right: 95px;
 }

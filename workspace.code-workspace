@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "BackEnd",
+			"path": "..\\..\\Escritorio\\BackEnd"
+		},
+		{
+			"name": "SensoresAweb",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "SensoresAweb"
+	}
+}
