@@ -36,10 +36,10 @@ const generarLienzo = () => {
         document.getElementById('inferior').style.display = 'none';
         document.getElementById('general').style.display = 'block';
         document.getElementById('divInterno').style.display = 'block';
-        document.getElementById('divInterno').style.background = '#072227'
+        document.getElementById('divInterno').style.background = '#000'
         document.getElementById('divInterno').style.height = '5px';
         document.getElementById('divInterno').style.width ='5px';
-        document.getElementById('divInterno').style.border = '1px solid #072227';
+        document.getElementById('divInterno').style.border = '1px solid #000';
         document.getElementById('divInterno').style.top = altura/2 + 'px'
         document.getElementById('divInterno').style.left = anchura/2 + 'px';
         switch (anchura) {
@@ -96,7 +96,20 @@ function media (x1,x2,x3,x4) { //Esta función calcula la media de las coordenad
     return media2/4
 }
 function repetir () {//Esta función permite cambiar el tamaño del lienzo para poder volver a tomar otra medición
-    location.reload();
+    document.getElementById('inferior').style.display = 'block';
+    document.getElementById('general').style.display = 'none';
+    document.getElementById('divInterno').style.display = 'none';
+    comprobarDistancia = false;
+    document.getElementById('Instrucciones').innerHTML = `
+            Para mover el punto <br>
+            <ul>
+                <li>w-> Arriba</li><br>
+                <li>a -> Izquierda</li><br>
+                <li>s -> Derecha</li><br>
+                <li>d -> Abajo</li><br>
+                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+            </ul>
+            `;
 }
 function cambiarPosicion () { //Esta función permite
     comprobarDistancia = false;
@@ -107,13 +120,13 @@ function cambiarPosicion () { //Esta función permite
                 <li>a -> Izquierda</li><br>
                 <li>s -> Derecha</li><br>
                 <li>d -> Abajo</li><br>
-                <li>Enter -> Hallar posición punto</li>
+                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
             </ul>
             `;
 }
 //Detecta que se presionen las teclas, y cuando se presione enter
 addEventListener('keypress', () => {
-    
+    if(verMovimiento == 0){
         let tecla = event.key;//Detecta que tecla se a pulsado. el event.key devuelve una cadena de texto que indica la tecla pulsada. Aunque 'event' esté deprecado no encontré ningund alternativa para su uso
         let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
         let izquierda = parseFloat(document.getElementById('divInterno').style.left);
@@ -231,12 +244,39 @@ addEventListener('keypress', () => {
                         <li class="quitarMarcador"><b>Sensor arriba derecha:</b></li>
                         <li>(${sensorxy}px,${gamma}º)</li>
                     </ul> <br>
-                    <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                    <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button>
+                    <button onclick="repetir()">Cambiar medidas lienzo</button>
+                    <button onclick="cambiarPosicion()">Cambiar posición</button>
                 `;
-                 
+                let datos = {
+                    'longitud1': sensor00,
+                    'longitud2': sensorx0,
+                    'longitud3': sensor0y,
+                    'longitud4': sensorxy,
+                    'movimientos': cadenaDeTxtBDD,
+                    'angulo1': alfa,
+                    'angulo2': beta,
+                    'angulo3': gamma,
+                    'angulo4': delta,
+                    'abscisa': mediaX,
+                    'oordenada': mediaY,
+                    'altura': altura,
+                    'anchura': anchura,
+                    'referencia': referencia
+                
+                };
+                let url = '../BackEnd/agregarBBDD.php';
+                    $.ajax({
+                        data: datos,
+                        url: url,
+                        type: 'post',
+                        success:  function (response) {
+                            console.log(response); // Imprimir respuesta del archivo
+                        },
+                        error: function (error) {
+                            console.log(error); // Imprimir respuesta de error
+                        }
+                });
             }
         }
-    
+        }
 })
-
