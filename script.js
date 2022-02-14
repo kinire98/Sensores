@@ -1,18 +1,6 @@
 let comprobarDistancia = false;
 let cadenaDeTxtBDD = '';
-var verMovimiento = 0;
 const generarLienzo = () => {
-    // --
-    let ref = document.getElementById("ref").value;
-    let buscaRef = lista_referenciaJS.indexOf(ref);
-    console.log("XD: "+buscaRef);
-
-    if(buscaRef != -1){
-        document.getElementById("error").innerHTML = "EL NOMBRE YA ESTÁ EN USO";
-    }else{
-        document.getElementById("error").innerHTML = "";
-        verMovimiento = 0;
-    // --
 
 
     let anchura = parseInt(document.getElementById('width').value); //Coge los valores de alto y ancho introducidos por el usuario para poder hacer el lienzo personalizado
@@ -81,7 +69,6 @@ const generarLienzo = () => {
                 default:
                     document.getElementById('lienzo').style.top = 'auto';
                     break;
-            }
         }
     }
 }
@@ -121,7 +108,7 @@ function cambiarPosicion () { //Esta función permite
 //Detecta que se presionen las teclas, y cuando se presione enter
 
 addEventListener('keypress', () => {
-    if(verMovimiento == 0){
+    
         let tecla = event.key;//Detecta que tecla se a pulsado. el event.key devuelve una cadena de texto que indica la tecla pulsada. Aunque 'event' esté deprecado no encontré ningund alternativa para su uso
         let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
         let izquierda = parseFloat(document.getElementById('divInterno').style.left);
@@ -158,7 +145,6 @@ addEventListener('keypress', () => {
         if (tecla == 'Enter' && !comprobarDistancia) {
             if (document.getElementById('inferior').style.display == 'none') {
                 comprobarDistancia = true; //Para que no se pulse dos veces el enter
-                let referencia = document.getElementById('ref').value;
                //Simulación del sensor
             let abscisas = parseFloat(document.getElementById('divInterno').style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
             let oordenadasOpuestas = parseFloat(document.getElementById('divInterno').style.top)+5;//para que más tarde al pasarlo a los sensores el código pueda seguir 
@@ -231,37 +217,9 @@ addEventListener('keypress', () => {
                     <button onclick="repetir()">Cambiar medidas lienzo</button>
                     <button onclick="cambiarPosicion()">Cambiar posición</button>
                 `;
-                let datos = {
-                    'longitud1': sensor00,
-                    'longitud2': sensorx0,
-                    'longitud3': sensor0y,
-                    'longitud4': sensorxy,
-                    'movimientos': cadenaDeTxtBDD,
-                    'angulo1': alfa,
-                    'angulo2': beta,
-                    'angulo3': gamma,
-                    'angulo4': delta,
-                    'abscisa': mediaX,
-                    'oordenada': mediaY,
-                    'altura': altura,
-                    'anchura': anchura,
-                    'referencia': referencia
-                
-                };
-                let url = '../BackEnd/agregarBBDD.php';
-                    $.ajax({
-                        data: datos,
-                        url: url,
-                        type: 'post',
-                        success:  function (response) {
-                            console.log(response); // Imprimir respuesta del archivo
-                        },
-                        error: function (error) {
-                            console.log(error); // Imprimir respuesta de error
-                        }
-                });
+                 
             }
         }
-    }
+    
 })
 
