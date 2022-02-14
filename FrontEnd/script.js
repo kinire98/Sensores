@@ -1,6 +1,20 @@
 let comprobarDistancia = false;
 let cadenaDeTxtBDD = '';
+var verMovimiento = 0;
 const generarLienzo = () => {
+    // --
+    let ref = document.getElementById("ref").value;
+    let buscaRef = lista_referenciaJS.indexOf(ref);
+    console.log("XD: "+buscaRef);
+
+    if(buscaRef != -1){
+        document.getElementById("error").innerHTML = "EL NOMBRE YA ESTÁ EN USO";
+    }else{
+        document.getElementById("error").innerHTML = "";
+        verMovimiento = 0;
+    // --
+
+
     let anchura = parseInt(document.getElementById('width').value); //Coge los valores de alto y ancho introducidos por el usuario para poder hacer el lienzo personalizado
     let altura = parseInt(document.getElementById('height').value);
     if (!anchura || !altura ) { //Comprueba que se hayan introducido ambos valores, en caso contrario saltará una alerta que comunicará que ambos datos son obligatorios
@@ -22,51 +36,52 @@ const generarLienzo = () => {
         document.getElementById('divInterno').style.border = '1px solid #000';
         document.getElementById('divInterno').style.top = altura/2 + 'px'
         document.getElementById('divInterno').style.left = anchura/2 + 'px';
-        switch (anchura) { //Otorga estilos dinámicos según el tamaño del contenedor
-            case 500: case 550:
-                document.getElementById('lienzo').style.right = '145%';
+            switch (anchura) { //Otorga estilos dinámicos según el tamaño del contenedor
+                case 500: case 550:
+                    document.getElementById('lienzo').style.right = '145%';
+                    break;
+                case 600:case 650:
+                    document.getElementById('lienzo').style.right = '115%';
+                    break;
+                case 700:case 750:
+                    document.getElementById('lienzo').style.right = '82.5%';
+                    break;
+                case 800: 
+                    document.getElementById('lienzo').style.right = '72.5%';
+                    break;
+                case 850:
+                    document.getElementById('lienzo').style.right = '65%';
+                    break;
+                case 900:
+                    document.getElementById('lienzo').style.right = '56.5%';
+                    break;
+                default:
+                    document.getElementById('lienzo').style.right = 'auto';
+                    break;
+            }
+            switch (altura) {
+                case 500: case 550:
+                    document.getElementById('lienzo').style.top = '155px';
+                    break;
+                case 600: case 650:
+                    document.getElementById('lienzo').style.top = '125px';
                 break;
-            case 600:case 650:
-                document.getElementById('lienzo').style.right = '115%';
-                break;
-            case 700:case 750:
-                document.getElementById('lienzo').style.right = '82.5%';
-                break;
-            case 800: 
-                document.getElementById('lienzo').style.right = '72.5%';
-                break;
-            case 850:
-                document.getElementById('lienzo').style.right = '65%';
-                break;
-            case 900:
-                document.getElementById('lienzo').style.right = '56.5%';
-                break;
-            default:
-                document.getElementById('lienzo').style.right = 'auto';
-                break;
-        }
-        switch (altura) {
-            case 500: case 550:
-                document.getElementById('lienzo').style.top = '155px';
-                break;
-            case 600: case 650:
-                document.getElementById('lienzo').style.top = '125px';
-            break;
-            case 700: case 750:
-                document.getElementById('lienzo').style.top = '80px';
-                break;
-            case 800:
-                document.getElementById('lienzo').style.top = '50px';
-                break;
-            case 850:
-                document.getElementById('lienzo').style.top = '35px';
-                break;
-            case 900:
-                document.getElementById('lienzo').style.top = '10px';
-                break;
-            default:
-                document.getElementById('lienzo').style.top = 'auto';
-                break;
+                case 700: case 750:
+                    document.getElementById('lienzo').style.top = '80px';
+                    break;
+                case 800:
+                    document.getElementById('lienzo').style.top = '50px';
+                    break;
+                case 850:
+                    document.getElementById('lienzo').style.top = '35px';
+                    break;
+                case 900:
+                    document.getElementById('lienzo').style.top = '10px';
+                    break;
+                default:
+                    document.getElementById('lienzo').style.top = 'auto';
+                    break;
+            }
         }
     }
 }
@@ -104,46 +119,47 @@ function cambiarPosicion () { //Esta función permite
             `;
 }
 //Detecta que se presionen las teclas, y cuando se presione enter
-addEventListener('keypress', () => {
-    let tecla = event.key;//Detecta que tecla se a pulsado. el event.key devuelve una cadena de texto que indica la tecla pulsada. Aunque 'event' esté deprecado no encontré ningund alternativa para su uso
-    let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
-    let izquierda = parseFloat(document.getElementById('divInterno').style.left);
-    
-    let anchura = parseInt(document.getElementById('width').value);//Estas variables obtienen los valores de alto y ancho del recipiente
-    let altura = parseInt(document.getElementById('height').value);
-    console.log(tecla);
 
-    if ((tecla == 'w' || tecla == 'W') && !comprobarDistancia) { //Las condiciones detectan que se esté pulsando una de las teclas indicadas para el movimiento del punto, ya sea en mayúscula o en minúscula
-        //También comprueba que la variable comprobarDistancia no sea cierta ya que significaría que el enter se ah presionado y que por tanto no se puede seguir moviendo el punto
-        if (arriba >= 5) {
-            document.getElementById('divInterno').style.top = arriba - 10 +'px';
-            cadenaDeTxtBDD += 'w';//Esta línea guarda el registro de las teclas para así poder guardar el recorrido en una base de datos y volver a verlo más adelante
+addEventListener('keypress', () => {
+    if(verMovimiento == 0){
+        let tecla = event.key;//Detecta que tecla se a pulsado. el event.key devuelve una cadena de texto que indica la tecla pulsada. Aunque 'event' esté deprecado no encontré ningund alternativa para su uso
+        let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
+        let izquierda = parseFloat(document.getElementById('divInterno').style.left);
+
+        let anchura = parseInt(document.getElementById('width').value);//Estas variables obtienen los valores de alto y ancho del recipiente
+        let altura = parseInt(document.getElementById('height').value);
+
+        if ((tecla == 'w' || tecla == 'W') && !comprobarDistancia) { //Las condiciones detectan que se esté pulsando una de las teclas indicadas para el movimiento del punto, ya sea en mayúscula o en minúscula
+            //También comprueba que la variable comprobarDistancia no sea cierta ya que significaría que el enter se ah presionado y que por tanto no se puede seguir moviendo el punto
+            if (arriba >= 5) {
+                document.getElementById('divInterno').style.top = arriba - 10 +'px';
+                cadenaDeTxtBDD += 'w';//Esta línea guarda el registro de las teclas para así poder guardar el recorrido en una base de datos y volver a verlo más adelante
+            }
+        }  
+        if ((tecla == 'a' || tecla == 'A')  && !comprobarDistancia) {
+            if (izquierda >= 5) {
+                document.getElementById('divInterno').style.left = izquierda - 10  +'px';
+                cadenaDeTxtBDD += 'a';
+            }
+        }  
+        if ((tecla == 's' || tecla == 'S')  && !comprobarDistancia) {
+            if (arriba <= (altura - 10.5)) {
+                document.getElementById('divInterno').style.top = arriba + 10 +'px';
+                cadenaDeTxtBDD += 's';
+            }    
+        }  
+        if ((tecla == 'd' || tecla == 'D')  && !comprobarDistancia) {
+            if (izquierda <= (anchura - 10.5)) {
+                document.getElementById('divInterno').style.left = izquierda + 10  +'px';
+                cadenaDeTxtBDD += 'd';
+                
+            }
         }
-    }  
-    if ((tecla == 'a' || tecla == 'A')  && !comprobarDistancia) {
-        if (izquierda >= 5) {
-            document.getElementById('divInterno').style.left = izquierda - 10  +'px';
-            cadenaDeTxtBDD += 'a';
-        }
-    }  
-    if ((tecla == 's' || tecla == 'S')  && !comprobarDistancia) {
-        if (arriba <= (altura - 10.5)) {
-            document.getElementById('divInterno').style.top = arriba + 10 +'px';
-            cadenaDeTxtBDD += 's';
-        }    
-    }  
-    if ((tecla == 'd' || tecla == 'D')  && !comprobarDistancia) {
-        if (izquierda <= (anchura - 10.5)) {
-            document.getElementById('divInterno').style.left = izquierda + 10  +'px';
-            cadenaDeTxtBDD += 'd';
-            
-        }
-    }
-    if (tecla == 'Enter' && !comprobarDistancia) {
-        if (document.getElementById('inferior').style.display == 'none') {
-            comprobarDistancia = true; //Para que no se pulse dos veces el enter
-            let referencia = document.getElementById('ref').value;
-            //Simulación del sensor
+        if (tecla == 'Enter' && !comprobarDistancia) {
+            if (document.getElementById('inferior').style.display == 'none') {
+                comprobarDistancia = true; //Para que no se pulse dos veces el enter
+                let referencia = document.getElementById('ref').value;
+               //Simulación del sensor
             let abscisas = parseFloat(document.getElementById('divInterno').style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
             let oordenadasOpuestas = parseFloat(document.getElementById('divInterno').style.top)+5;//para que más tarde al pasarlo a los sensores el código pueda seguir 
             let oordenadas = altura - oordenadasOpuestas;//funcionando y no tener que adaptarlo, solo tener que adaptar el valor de las variable llamadas sensorWW
@@ -207,51 +223,54 @@ addEventListener('keypress', () => {
             beta = Number(beta.toFixed(2));
             gamma = Number(gamma.toFixed(2));
             delta = Number(delta.toFixed(2));
-            document.getElementById('Instrucciones').style.textAlign = 'center';
-            document.getElementById('Instrucciones').innerHTML = `
-                <ul>
-                    <li class="quitarMarcador"><i><b>Coordenadas:</b></i></li>
-                    <li>(${mediaX}px,${mediaY}px)</li>
-                    <li class="quitarMarcador"><i><b>Coordenadas polares:</b></i></li>
-                    <li class="quitarMarcador"><b>Sensor abajo izquierda:</b></li>
-                    <li>(${sensor00}px,${alfa}º)</li>
-                    <li class="quitarMarcador"><b>Sensor abajo derecha:</b></li>
-                    <li>(${sensorx0}px,${beta}º)</li>
-                    <li class="quitarMarcador"><b>Sensor arriba izquierda:</b></li>
-                    <li>(${sensor0y}px,${gamma}º)</li>
-                    <li class="quitarMarcador"><b>Sensor arriba derecha:</b></li>
-                    <li>(${sensorxy}px,${delta}º)</li>
-                </ul> <br>
-                <button onclick="repetir()">Cambiar medidas lienzo</button>
-                <button onclick="cambiarPosicion()">Cambiar posición</button>
-            `;
-            let datos = {
-                'longitud1': sensor00,
-                'longitud2': sensorx0,
-                'longitud3': sensor0y,
-                'longitud4': sensorxy,
-                'movimientos': cadenaDeTxtBDD,
-                'angulo1': alfa,
-                'angulo2': beta,
-                'angulo3': gamma,
-                'angulo4': delta,
-                'abscisa': mediaX,
-                'oordenada': mediaY,
-                'referencia': referencia
-            
-            };
-            let url = '../BackEnd/agregarBBDD.php';
-                $.ajax({
-                    data: datos,
-                    url: url,
-                    type: 'post',
-                    success:  function (response) {
-                        console.log(response); // Imprimir respuesta del archivo
-                    },
-                    error: function (error) {
-                        console.log(error); // Imprimir respuesta de error
-                    }
-            });
+                document.getElementById('Instrucciones').style.textAlign = 'center';
+                document.getElementById('Instrucciones').innerHTML = `
+                    <ul>
+                        <li><i><b>Coordenadas:</b></i></li>
+                        <li>(${mediaX}px,${mediaY}px)</li>
+                        <li><i><b>Coordenadas polares:</b></i></li>
+                        <li><b>Sensor abajo izquierda:</b></li>
+                        <li>(${sensor00}px,${alfa}º)</li>
+                        <li><b>Sensor abajo derecha:</b></li>
+                        <li>(${sensorx0}px,${beta}º)</li>
+                        <li><b>Sensor arriba izquierda:</b></li>
+                        <li>(${sensor0y}px,${gamma}º)</li>
+                        <li><b>Sensor arriba derecha:</b></li>
+                        <li>(${sensorxy}px,${delta}º)</li>
+                    </ul> <br>
+                    <button onclick="repetir()">Cambiar medidas lienzo</button>
+                    <button onclick="cambiarPosicion()">Cambiar posición</button>
+                `;
+                let datos = {
+                    'longitud1': sensor00,
+                    'longitud2': sensorx0,
+                    'longitud3': sensor0y,
+                    'longitud4': sensorxy,
+                    'movimientos': cadenaDeTxtBDD,
+                    'angulo1': alfa,
+                    'angulo2': beta,
+                    'angulo3': gamma,
+                    'angulo4': delta,
+                    'abscisa': mediaX,
+                    'oordenada': mediaY,
+                    'altura': altura,
+                    'anchura': anchura,
+                    'referencia': referencia
+                
+                };
+                let url = '../BackEnd/agregarBBDD.php';
+                    $.ajax({
+                        data: datos,
+                        url: url,
+                        type: 'post',
+                        success:  function (response) {
+                            console.log(response); // Imprimir respuesta del archivo
+                        },
+                        error: function (error) {
+                            console.log(error); // Imprimir respuesta de error
+                        }
+                });
+            }
         }
     }
 })
