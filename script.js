@@ -18,10 +18,10 @@ const generarLienzo = () => {
         document.getElementById('inferior').style.display = 'none';
         document.getElementById('general').style.display = 'block';
         document.getElementById('divInterno').style.display = 'block';
-        document.getElementById('divInterno').style.background = '#000'
+        document.getElementById('divInterno').style.background = '#072227'
         document.getElementById('divInterno').style.height = '5px';
         document.getElementById('divInterno').style.width ='5px';
-        document.getElementById('divInterno').style.border = '1px solid #000';
+        document.getElementById('divInterno').style.border = '1px solid #072227';
         document.getElementById('divInterno').style.top = altura/2 + 'px'
         document.getElementById('divInterno').style.left = anchura/2 + 'px';
             switch (anchura) { //Otorga estilos dinámicos según el tamaño del contenedor
@@ -88,7 +88,7 @@ function repetir () {//Esta función permite cambiar el tamaño del lienzo para 
                 <li>a -> Izquierda</li><br>
                 <li>s -> Derecha</li><br>
                 <li>d -> Abajo</li><br>
-                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+                <li>Enter -> Hallar posición punto</li>
             </ul>
             `;
 }
@@ -101,7 +101,7 @@ function cambiarPosicion () { //Esta función permite
                 <li>a -> Izquierda</li><br>
                 <li>s -> Derecha</li><br>
                 <li>d -> Abajo</li><br>
-                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+                <li>Enter -> Hallar posición punto</li>
             </ul>
             `;
 }
@@ -176,46 +176,46 @@ addEventListener('keypress', () => {
             let mediaY = media(yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
             //El procedimiento de hacer la media está más enfocado a los sensores, ya que estos pueden cometer cierto error, sin embargo en el navegador es prácticamente imposible que surja
             
+            mediaX = Number(mediaX.toFixed(2))
+            mediaY = Number(mediaY.toFixed(2))
             
             let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
+            console.log(mediaX,sensor0y);
             let beta = Math.asin ((anchura-mediaX)/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
             let gamma = Math.asin ((altura-mediaY)/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
             let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
-            console.log(beta,mediaX,abscisas,sensorx0,(altura-mediaX)/sensorx0)
+            
             alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
             beta = (180*beta)/Math.PI;//teniendo en cuenta que 180ª grados son PI radianes
             gamma = (180*gamma)/Math.PI;//Con esto en mente estas líneas son dicha regla de tres
             delta = (180*delta)/Math.PI;
-
-
-
+            
+            
             sensor00 = Number(sensor00.toFixed(2)); // Esto son simples aproximaciones para facilitar el entendimiento
             sensorx0 = Number(sensorx0.toFixed(2));
             sensor0y = Number (sensor0y.toFixed(2));
             sensorxy = Number(sensorxy.toFixed(2));
-            mediaX = Number(mediaX.toFixed(2))
-            mediaY = Number(mediaY.toFixed(2))
             alfa = Number(alfa.toFixed(2));
             beta = Number(beta.toFixed(2));
             gamma = Number(gamma.toFixed(2));
             delta = Number(delta.toFixed(2));
-                document.getElementById('Instrucciones').style.textAlign = 'center';
-                document.getElementById('Instrucciones').innerHTML = `
+            document.getElementById('Instrucciones').style.textAlign = 'center';
+            document.getElementById('Instrucciones').innerHTML = `
                     <ul>
-                        <li><i><b>Coordenadas:</b></i></li>
+                        <li class="negrita">Coordenadas:</li>
                         <li>(${mediaX}px,${mediaY}px)</li>
-                        <li><i><b>Coordenadas polares:</b></i></li>
-                        <li><b>Sensor abajo izquierda:</b></li>
+                        <li class="negrita">Coordenadas polares:</li>
+                        <li class="negrita">Sensor abajo izquierda:</li>
                         <li>(${sensor00}px,${alfa}º)</li>
-                        <li><b>Sensor abajo derecha:</b></li>
+                        <li class="negrita">Sensor abajo derecha:</li>
                         <li>(${sensorx0}px,${beta}º)</li>
-                        <li><b>Sensor arriba izquierda:</b></li>
-                        <li>(${sensor0y}px,${gamma}º)</li>
-                        <li><b>Sensor arriba derecha:</b></li>
-                        <li>(${sensorxy}px,${delta}º)</li>
+                        <li class="negrita">Sensor arriba izquierda:</li>
+                        <li>(${sensor0y}px,${delta}º)</li>
+                        <li class="negrita">Sensor arriba derecha:</li>
+                        <li>(${sensorxy}px,${gamma}º)</li>
                     </ul> <br>
-                    <button onclick="repetir()">Cambiar medidas lienzo</button>
-                    <button onclick="cambiarPosicion()">Cambiar posición</button>
+                    <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
+                    <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button>
                 `;
                  
             }
