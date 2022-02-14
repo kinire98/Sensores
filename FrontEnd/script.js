@@ -186,16 +186,6 @@ addEventListener('keypress', () => {
             
             
             
-                       
-            xAbajo = Number(xAbajo.toFixed(2));
-            yAbajo = Number(yAbajo.toFixed(2));
-            xDcha = Number (xDcha.toFixed(2));
-            yDcha= Number(yDcha.toFixed(2));
-            xArriba = Number(xArriba.toFixed(2)); 
-            yArriba = Number(yArriba.toFixed(2));
-            yIzda = Number(yIzda.toFixed(2));
-            xIzda = Number(xIzda.toFixed(2));
-            
             let mediaX = media(xAbajo,xArriba,xDcha,xIzda);//Estas líneas hacen una media con los resultados obtenidos, para así si hay alguna discordancia entre medidas poder solucionar
             let mediaY = media(yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
             //El procedimiento de hacer la media está más enfocado a los sensores, ya que estos pueden cometer cierto error, sin embargo en el navegador es prácticamente imposible que surja
