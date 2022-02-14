@@ -15,8 +15,6 @@
                 <input type="number" name="width" id="width" step="50" min="500" max="900"><br>
                 <label for="height">Alto del recipiente (en píxeles):</label><br>
                 <input type="number" name="height" id="height" step="50" min="500" max="900"><br>
-                <label for="ref">Referencia</label><br>
-                <input type="text" name="ref" id="ref">
             </form>
             <button onclick="generarLienzo()">Generar lienzo</button>
         </div>
@@ -27,13 +25,13 @@
                 </div>
                 <div id="Instrucciones">
                     <p>
-                        Para mover el punto <br>
+                        <p>Para mover el punto</p> <br>
                         <ul>
-                            <li>w-> Arriba</li><br>
-                            <li>a -> Izquierda</li><br>
-                            <li>s -> Derecha</li><br>
-                            <li>d -> Abajo</li><br>
-                            <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+                            <li>W-> Arriba</li><br>
+                            <li>A -> Izquierda</li><br>
+                            <li>S -> Derecha</li><br>
+                            <li>S -> Abajo</li><br>
+                            <li>Enter -> Hallar posición punto</li>
                         </ul>
                     </p>
                 </div>
@@ -41,6 +39,5 @@
         </div>
     </div>
     <script src="./script.js"></script>
-
 </body>
 </html>
