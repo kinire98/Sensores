@@ -12,7 +12,7 @@ const generarLienzo = () => {
     }
     
 
-    if(buscaRef != -1){
+    if(buscaRef != -1 || ref.length < 3){
         //document.location.reload();
         document.getElementById("error").innerHTML = "EL NOMBRE YA ESTÁ EN USO";
     }else{
@@ -96,20 +96,7 @@ function media (x1,x2,x3,x4) { //Esta función calcula la media de las coordenad
     return media2/4
 }
 function repetir () {//Esta función permite cambiar el tamaño del lienzo para poder volver a tomar otra medición
-    document.getElementById('inferior').style.display = 'block';
-    document.getElementById('general').style.display = 'none';
-    document.getElementById('divInterno').style.display = 'none';
-    comprobarDistancia = false;
-    document.getElementById('Instrucciones').innerHTML = `
-            Para mover el punto <br>
-            <ul>
-                <li>w-> Arriba</li><br>
-                <li>a -> Izquierda</li><br>
-                <li>s -> Derecha</li><br>
-                <li>d -> Abajo</li><br>
-                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
-            </ul>
-            `;
+    window.location.reload();
 }
 function cambiarPosicion () { //Esta función permite
     comprobarDistancia = false;
