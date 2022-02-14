@@ -98,11 +98,11 @@
                     <p>
                         Para mover el punto <br>
                         <ul>
-                            <li>w-> Arriba</li><br>
-                            <li>a -> Izquierda</li><br>
-                            <li>s -> Derecha</li><br>
-                            <li>d -> Abajo</li><br>
-                            <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+                            <li>W-> Arriba</li><br>
+                            <li>A -> Izquierda</li><br>
+                            <li>S -> Derecha</li><br>
+                            <li>D -> Abajo</li><br>
+                            <li>Enter -> Hallar posición punto</li>
                         </ul>
                     </p>
                 </div>

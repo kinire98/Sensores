@@ -101,7 +101,7 @@ function repetir () {//Esta función permite cambiar el tamaño del lienzo para 
                 <li>a -> Izquierda</li><br>
                 <li>s -> Derecha</li><br>
                 <li>d -> Abajo</li><br>
-                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+                <li>Enter -> Hallar posición punto</li>
             </ul>
             `;
 }
@@ -114,7 +114,7 @@ function cambiarPosicion () { //Esta función permite
                 <li>a -> Izquierda</li><br>
                 <li>s -> Derecha</li><br>
                 <li>d -> Abajo</li><br>
-                <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+                <li>Enter -> Hallar posición punto</li>
             </ul>
             `;
 }
@@ -190,6 +190,8 @@ addEventListener('keypress', () => {
             let mediaY = media(yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
             //El procedimiento de hacer la media está más enfocado a los sensores, ya que estos pueden cometer cierto error, sin embargo en el navegador es prácticamente imposible que surja
             
+            mediaX = Number(mediaX.toFixed(2))
+            mediaY = Number(mediaY.toFixed(2))
             
             let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
             let beta = Math.asin ((anchura-mediaX)/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
@@ -207,8 +209,6 @@ addEventListener('keypress', () => {
             sensorx0 = Number(sensorx0.toFixed(2));
             sensor0y = Number (sensor0y.toFixed(2));
             sensorxy = Number(sensorxy.toFixed(2));
-            mediaX = Number(mediaX.toFixed(2))
-            mediaY = Number(mediaY.toFixed(2))
             alfa = Number(alfa.toFixed(2));
             beta = Number(beta.toFixed(2));
             gamma = Number(gamma.toFixed(2));
@@ -223,10 +223,10 @@ addEventListener('keypress', () => {
                         <li>(${sensor00}px,${alfa}º)</li>
                         <li><b>Sensor abajo derecha:</b></li>
                         <li>(${sensorx0}px,${beta}º)</li>
-                        <li><b>Sensor arriba izquierda:</b></li>
-                        <li>(${sensor0y}px,${gamma}º)</li>
                         <li><b>Sensor arriba derecha:</b></li>
-                        <li>(${sensorxy}px,${delta}º)</li>
+                        <li>(${sensorxy}px,${gamma}º)</li>
+                        <li><b>Sensor arriba izquierda:</b></li>
+                        <li>(${sensor0y}px,${delta}º)</li>
                     </ul> <br>
                     <button onclick="repetir()">Cambiar medidas lienzo</button>
                     <button onclick="cambiarPosicion()">Cambiar posición</button>
