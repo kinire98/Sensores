@@ -3,11 +3,7 @@ let cadenaDeTxtBDD = '';
 let cadenaDeTxtBDD2 = '';
 let cadenaDeTxtBDD3 = '';
 let cadenaDeTxtBDD4 = '';
-let punto1 = new CalculoCoordenadas('divInterno');
-let punto2 = new CalculoCoordenadas('divInterno2');
-let punto3 = new CalculoCoordenadas('divInterno3');
-let punto4 = new CalculoCoordenadas('divInterno4');
-const generarLienzo = () => {
+function generarLienzo ()  {
     let anchura = parseInt(document.getElementById('width').value); //Coge los valores de alto y ancho introducidos por el usuario para poder hacer el lienzo personalizado
     let altura = parseInt(document.getElementById('height').value);
     let numPts = parseInt(document.getElementById('number').value);
@@ -41,7 +37,7 @@ const generarLienzo = () => {
                     document.getElementById('lienzo').style.right = '82.5%';
                     break;
                 case 800: 
-                    document.getElementById('lienzo').style.right = '72.5%';
+                document.getElementById('lienzo').style.right = '72.5%';
                     break;
                 case 850:
                     document.getElementById('lienzo').style.right = '65%';
@@ -59,16 +55,16 @@ const generarLienzo = () => {
                     break;
                 case 600: case 650:
                     document.getElementById('lienzo').style.top = '125px';
-                break;
-                case 700: case 750:
-                    document.getElementById('lienzo').style.top = '80px';
                     break;
-                case 800:
+                    case 700: case 750:
+                        document.getElementById('lienzo').style.top = '80px';
+                        break;
+                        case 800:
                     document.getElementById('lienzo').style.top = '50px';
                     break;
-                case 850:
-                    document.getElementById('lienzo').style.top = '35px';
-                    break;
+                    case 850:
+                        document.getElementById('lienzo').style.top = '35px';
+                        break;
                 case 900:
                     document.getElementById('lienzo').style.top = '10px';
                     break;
@@ -141,46 +137,46 @@ function cambiarPosicion () { //Esta función permite
             <li>S -> Abajo</li>
             <li>D -> Derecha</li>
             <li>Enter -> Hallar posición punto</li>
-    </ul>
-    </div>
+            </ul>
+            </div>
     <div>
-        <ul>
-            <li>Punto 2: <div class="divInterno2"></div></li>
-            <li>T -> Arriba</li>
+    <ul>
+    <li>Punto 2: <div class="divInterno2"></div></li>
+    <li>T -> Arriba</li>
             <li>F -> Izquierda</li>
             <li>G -> Abajo</li>
             <li>H -> Derecha</li>
-        </ul>
-    </div>
-    <div>
-        <ul>
+            </ul>
+            </div>
+            <div>
+            <ul>
             <li>Punto 3: <div class="divInterno3"></div></li>
             <li>J -> Arriba</li>
             <li>N-> Izquierda</li>
             <li>M -> Abajo</li>
             <li>, -> Derecha</li>
-        </ul>
+            </ul>
     </div>
     <div>
         <ul>
-            <li>Punto 4: <div class="divInterno4"></div></li>
-            <li>O -> Arriba</li>
-            <li>K -> Izquierda</li>
-            <li>L -> Abajo</li>
-            <li>Ñ -> Derecha</li>
+        <li>Punto 4: <div class="divInterno4"></div></li>
+        <li>O -> Arriba</li>
+        <li>K -> Izquierda</li>
+        <li>L -> Abajo</li>
+        <li>Ñ -> Derecha</li>
         </ul>
-    </div>
-</p>
+        </div>
+        </p>
             `;
         }
         //Detecta que se presionen las teclas, y cuando se presione enter
-
-
-
-function movimientoPunto1 (numPts) {
-    addEventListener('keypress', () => {
-        let tecla = event.key;
-        let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
+        
+        
+        
+        function movimientoPunto1 (numPts) {
+            addEventListener('keypress', () => {
+                let tecla = event.key;
+                let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
         let izquierda = parseFloat(document.getElementById('divInterno').style.left);
         let anchura = parseInt(document.getElementById('width').value);//Estas variables obtienen los valores de alto y ancho del recipiente
         let altura = parseInt(document.getElementById('height').value);
@@ -250,7 +246,7 @@ function movimientoPunto2 (numPts) {
             if (arriba2 <= (altura - 10.5)) {
                 document.getElementById('divInterno2').style.top = arriba2 + 10 +'px';
                 cadenaDeTxtBDD2 += 'g';
-
+                
             }    
         }  
         if ((tecla == 'h' || tecla == 'H')  && !comprobarDistancia) {
@@ -418,13 +414,18 @@ class CalculoCoordenadas {
         return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];
     }
 }
+let punto1 = new CalculoCoordenadas('divInterno');
+let punto2 = new CalculoCoordenadas('divInterno2');
+let punto3 = new CalculoCoordenadas('divInterno3');
+let punto4 = new CalculoCoordenadas('divInterno4');
 
 
-function escribirCoordenadas (numPts,altura,anchura) {
+function escribirCoordenadas (numPts) {
     addEventListener('keypress', () => {
         let tecla = event.key;
-        if (tecla == 'Enter' && !comprobarDistancia) {
-            if (document.getElementById('inferior').style.display == 'none') {
+        if (tecla == 'Enter') {
+            if (document.getElementById('inferior').style.display == 'none' && !comprobarDistancia) {
+                comprobarDistancia = true;
                 let coordenadasPunto1 = punto1.calculoCoordenadas();
                 let coordenadasPunto2 = punto2.calculoCoordenadas();
                 let coordenadasPunto3 = punto3.calculoCoordenadas();
