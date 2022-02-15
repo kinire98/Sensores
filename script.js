@@ -79,10 +79,10 @@ const generarLienzo = () => {
         } else {
             if (numPts >= 2) {
                 document.getElementById('divInterno2').style.display = 'block';
-                document.getElementById('divInterno2').style.background = '#03045E'
+                document.getElementById('divInterno2').style.background = '#FDEFF4'
                 document.getElementById('divInterno2').style.height = '5px';
                 document.getElementById('divInterno2').style.width ='5px';
-                document.getElementById('divInterno2').style.border = '1px solid #03045E';
+                document.getElementById('divInterno2').style.border = '1px solid #FDEFF4';
                 document.getElementById('divInterno2').style.top = altura/2 + 'px'
                 document.getElementById('divInterno2').style.left = anchura/2 + 'px';
                 if (numPts >= 3) {
@@ -95,10 +95,10 @@ const generarLienzo = () => {
                     document.getElementById('divInterno3').style.left = anchura/2 + 'px';            
                     if (numPts == 4) {
                         document.getElementById('divInterno4').style.display = 'block';
-                        document.getElementById('divInterno4').style.background = '#072227'
+                        document.getElementById('divInterno4').style.background = '#FF5C8D'
                         document.getElementById('divInterno4').style.height = '5px';
                         document.getElementById('divInterno4').style.width ='5px';
-                        document.getElementById('divInterno4').style.border = '1px solid #072227';
+                        document.getElementById('divInterno4').style.border = '1px solid #FF5C8D';
                         document.getElementById('divInterno4').style.top = altura/2 + 'px'
                         document.getElementById('divInterno4').style.left = anchura/2 + 'px';                
                     }

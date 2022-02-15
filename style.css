@@ -71,18 +71,24 @@
     bottom: auto;
     right: auto;
     z-index: 5;
+    background:#FF5C8D;
+    border: 5px solid #FF5C8D;
 }
 .divInternoo{
     background: #072227;
+    border: 5px solid #072227;
 }
 .divInternoo2 {
-    background:#03045E;
+    background:#FDEFF4;
+    border: 5px solid #FDEFF4;
 }
 .divInternoo3 {
     background:#F1D00A;
+    border: 5px solid #F1D00A;
 }
 .divInternoo4 {
-    background:#ED5EDD;
+    background:#FF5C8D;
+    border: 5px solid #FF5C8D;
 }
 #general {
     display: none;
