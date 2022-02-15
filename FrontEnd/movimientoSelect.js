@@ -27,6 +27,12 @@ function movimientoSelect(){
         document.getElementById('divInterno').style.border = '1px solid #000';
         document.getElementById('divInterno').style.top = altura/2 + 'px'
         document.getElementById('divInterno').style.left = anchura/2 + 'px';
+        document.getElementById('Instrucciones').style.display = 'none';
+
+        document.getElementById('form_ver').style.display = 'none';
+        document.getElementById('btn-volver').style.display = 'block';
+
+
         switch (anchura) {
             case 500: case 550:
                 document.getElementById('lienzo').style.right = '145%';
@@ -104,7 +110,7 @@ function movimientoSelect(){
         let letra = 'a';
         setInterval(function() {
             if(numMov == movimiento.length){
-                return "xd"; // SALIR DEL BUCLE
+                return "salir"; // SALIR DEL BUCLE
             }
             letra = movimiento.charAt(numMov);
             if(letra == 'w'){
@@ -126,10 +132,7 @@ function movimientoSelect(){
             numMov++;
         }, 100);
 
-        function stopInterval(){
-            
-            console.log("OKkKk");
-        }
+        
         
 
     }

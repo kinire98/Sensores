@@ -42,7 +42,10 @@ const generarLienzo = () => {
         document.getElementById('divInterno').style.border = '1px solid #000';
         document.getElementById('divInterno').style.top = altura/2 + 'px'
         document.getElementById('divInterno').style.left = anchura/2 + 'px';
-        switch (anchura) {
+
+        document.getElementById('form_ver').style.display = 'none';
+        document.getElementById('btn-volver').style.display = 'block';
+        /*switch (anchura) {
             case 500: case 550:
                 document.getElementById('lienzo').style.right = '145%';
                 break;
@@ -64,8 +67,9 @@ const generarLienzo = () => {
             default:
                 document.getElementById('lienzo').style.right = 'auto';
                 break;
-        }
-        switch (altura) {
+        }*/
+        document.getElementById('lienzo').style.right = 'auto';
+       /* switch (altura) {
             case 500: case 550:
                 document.getElementById('lienzo').style.top = '155px';
                 break;
@@ -87,7 +91,8 @@ const generarLienzo = () => {
             default:
                 document.getElementById('lienzo').style.top = 'auto';
                 break;
-        }
+        }*/
+        document.getElementById('lienzo').style.top = 'auto';
     }
 }
 }
@@ -95,7 +100,7 @@ function media (x1,x2,x3,x4) { //Esta función calcula la media de las coordenad
     let media2 = x1 + x2 + x3 + x4;
     return media2/4
 }
-function repetir () {//Esta función permite cambiar el tamaño del lienzo para poder volver a tomar otra medición
+function repetir () {//Esta función permite volver al menu inicial
     window.location.reload();
 }
 function cambiarPosicion () { //Esta función permite
@@ -231,7 +236,7 @@ addEventListener('keypress', () => {
                         <li class="quitarMarcador"><b>Sensor arriba derecha:</b></li>
                         <li>(${sensorxy}px,${gamma}º)</li>
                     </ul> <br>
-                    <button onclick="repetir()">Cambiar medidas lienzo</button>
+                    <button onclick="repetir()">Salir</button>
                     <button onclick="cambiarPosicion()">Cambiar posición</button>
                 `;
                 let datos = {

@@ -13,10 +13,12 @@
     <title>Document</title>
 </head>
 <body>
-    
-    <div id="suoerior">
+    <div id="btn-volver" style="display:none;">
+        <i class="fas fa-home" onclick="repetir()"></i>
+    </div>
+    <div id="superior">
         <div id="inferior">
-            <form>
+            <form id="form_crear">
                 <label for="width">Ancho del recipiente (en píxeles):</label><br>
                 <input type="number" name="width" id="width" step="50" min="500" max="900"><br>
                 <label for="height">Alto del recipiente (en píxeles):</label><br>
@@ -28,7 +30,8 @@
             <button onclick="generarLienzo()">Generar lienzo</button>
         </div>
 
-        <div>
+        <div id="form_ver">
+            <h2>Selecciona un movimiento</h2>
             <select name="movimientoBBDD" id="movimientoBBDD">
                 <?php
                     $sql = "SELECT * FROM sensores";
@@ -94,15 +97,15 @@
                     <div id="divInterno"></div>
                 </div>
                 
-                <div id="Instrucciones" style="margin-top: 600px;">
+                <div id="Instrucciones">
                     <p>
                         Para mover el punto <br>
                         <ul>
-                            <li>W-> Arriba</li><br>
-                            <li>A -> Izquierda</li><br>
-                            <li>S -> Derecha</li><br>
-                            <li>D -> Abajo</li><br>
-                            <li>Enter -> Hallar posición punto</li>
+                            <li>w-> Arriba</li><br>
+                            <li>a -> Izquierda</li><br>
+                            <li>s -> Derecha</li><br>
+                            <li>d -> Abajo</li><br>
+                            <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
                         </ul>
                     </p>
                 </div>
@@ -111,6 +114,7 @@
     </div>
     <script src="script.js"></script>
     <script src="../jquery.min.js"></script>
+    <script src="../font-awesome.js"></script>
     <script>
         var lista_movimientosJS = <?php echo json_encode($lista_movimientos); ?>;
         var lista_referenciaJS = <?php echo json_encode($lista_referencia); ?>;
