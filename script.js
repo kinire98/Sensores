@@ -127,14 +127,46 @@ function repetir () {//Esta función permite cambiar el tamaño del lienzo para 
 function cambiarPosicion () { //Esta función permite
     comprobarDistancia = false;
     document.getElementById('Instrucciones').innerHTML = `
-            Para mover el punto <br>
-            <ul>
-                <li>w-> Arriba</li><br>
-                <li>a -> Izquierda</li><br>
-                <li>s -> Derecha</li><br>
-                <li>d -> Abajo</li><br>
-                <li>Enter -> Hallar posición punto</li>
-            </ul>
+    <p>
+    <p>Para mover el punto</p> <br>
+    <div>
+        <ul>
+            <li>Punto 1: <div class="divInterno"></div></li>
+            <li>W -> Arriba</li>
+            <li>A -> Izquierda</li>
+            <li>S -> Abajo</li>
+            <li>D -> Derecha</li>
+            <li>Enter -> Hallar posición punto</li>
+    </ul>
+    </div>
+    <div>
+        <ul>
+            <li>Punto 2: <div class="divInterno2"></div></li>
+            <li>T -> Arriba</li>
+            <li>F -> Izquierda</li>
+            <li>G -> Abajo</li>
+            <li>H -> Derecha</li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li>Punto 3: <div class="divInterno3"></div></li>
+            <li>J -> Arriba</li>
+            <li>N-> Izquierda</li>
+            <li>M -> Abajo</li>
+            <li>, -> Derecha</li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li>Punto 4: <div class="divInterno4"></div></li>
+            <li>O -> Arriba</li>
+            <li>K -> Izquierda</li>
+            <li>L -> Abajo</li>
+            <li>Ñ -> Derecha</li>
+        </ul>
+    </div>
+</p>
             `;
         }
         //Detecta que se presionen las teclas, y cuando se presione enter
@@ -639,7 +671,7 @@ function escribirCoordenadas (numPts,altura,anchura) {
                         </ul> <br>
                         <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
                         <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="segundaPagina()" class="botonEspecial">Siguiente página</button>
+                        <button onclick="segundaPagina()" class="botonEspecial">Página 2</button>
                         </div>
                         <div style="display:none;" id='segundaPagina'>
                         <ul>
@@ -658,7 +690,7 @@ function escribirCoordenadas (numPts,altura,anchura) {
                         </ul><br>
                         <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
                         <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="primeraPagina()" class="botonEspecial">Página Anterior</button>
+                        <button onclick="primeraPagina()" class="botonEspecial">Página 1</button>
                         </div>
                         `
                         break;
@@ -691,7 +723,7 @@ function escribirCoordenadas (numPts,altura,anchura) {
                         </ul> <br>
                         <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
                         <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="segundaPagina()" class="botonEspecial">Siguiente página</button>
+                        <button onclick="segundaPagina()" class="botonEspecial">Página 2</button>
                         </div>
                         <div style="display:none;" id='segundaPagina'>
                         <ul>
@@ -720,7 +752,7 @@ function escribirCoordenadas (numPts,altura,anchura) {
                         </ul><br>
                         <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
                         <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="primeraPagina()" class="botonEspecial">Página Anterior</button>
+                        <button onclick="primeraPagina()" class="botonEspecial">Página 1</button>
                         </div>
                         `
                         break;
