@@ -3,6 +3,10 @@ let cadenaDeTxtBDD = '';
 let cadenaDeTxtBDD2 = '';
 let cadenaDeTxtBDD3 = '';
 let cadenaDeTxtBDD4 = '';
+let punto1 = new CalculoCoordenadas('divInterno');
+let punto2 = new CalculoCoordenadas('divInterno2');
+let punto3 = new CalculoCoordenadas('divInterno3');
+let punto4 = new CalculoCoordenadas('divInterno4');
 const generarLienzo = () => {
     let anchura = parseInt(document.getElementById('width').value); //Coge los valores de alto y ancho introducidos por el usuario para poder hacer el lienzo personalizado
     let altura = parseInt(document.getElementById('height').value);
@@ -174,8 +178,6 @@ function cambiarPosicion () { //Esta función permite
 
 
 function movimientoPunto1 (numPts) {
-    let anchura2 = parseInt(document.getElementById('width').value);//Estas variables obtienen los valores de alto y ancho del recipiente
-    let altura2 = parseInt(document.getElementById('height').value);
     addEventListener('keypress', () => {
         let tecla = event.key;
         let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
@@ -212,65 +214,7 @@ function movimientoPunto1 (numPts) {
     if (numPts > 1) {
         movimientoPunto2(numPts);
     }
-    escribirCoordenadas(numPts,altura2,anchura2);
-}
-
-
-function calculoPunto1 (altura,anchura) {
-    //Simulación del sensor
-    let abscisas = parseFloat(document.getElementById('divInterno').style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
-    let oordenadasOpuestas = parseFloat(document.getElementById('divInterno').style.top)+5;//para que más tarde al pasarlo a los sensores el código pueda seguir 
-    let oordenadas = altura - oordenadasOpuestas;//funcionando y no tener que adaptarlo, solo tener que adaptar el valor de las variable llamadas sensorWW
-    let abscisasOpuestas = anchura - abscisas;//Para el bottom y el right se calcula por diferencia ya que al intentar hallar la distancia a dichos bordes, devolvía el valor de undefined
-    let sensor00 = Math.sqrt((abscisas**2)+(oordenadas**2));//Se calcula obteniendo la distancia a los bordes del recipiente y haciendo un teorema de Pitágoras para hallar la hipotenusa
-    let sensorx0 = Math.sqrt((abscisasOpuestas**2)+(oordenadas**2));
-    let sensor0y = Math.sqrt((abscisas**2)+(oordenadasOpuestas**2));
-    let sensorxy = Math.sqrt(((anchura-abscisas)**2)+(oordenadasOpuestas)**2);
-    //Fin simulación sensores
-    
-    
-    let xAbajo = ((anchura**2)-(sensorx0**2)+(sensor00**2))/(2*anchura); //En todas estas líneas de código se calculan las coordenadas utilizando la fórmula clave
-    let yAbajo =Math.abs(((anchura-xAbajo)**2)-(sensorx0**2));//Esta fórmula es un sistema de ecuaciones cuadráticas siendo cada una de estas ecuaciones un teorema de Pitágoras, en el cual conocemos la hipotenusa
-    yAbajo = Math.sqrt(yAbajo);// siendo el punto final el mismo para ambos triángulos
-    let yIzda =  ((altura**2)-(sensor0y**2)+(sensor00**2))/(2*altura);//Este sistema se repite 4 veces, una por cada uno de los lados del contenedor, para así utilizar todos los sensores
-    let xIzda = Math.abs(((altura-yIzda)**2)-(sensor0y**2));// y obtener el resultado más preciso posible
-    xIzda = Math.sqrt(xIzda);
-    let xArriba = anchura-((anchura**2)-(sensor0y**2)+(sensorxy**2))/(2*anchura);
-    let c2 = -(sensorxy**2)+(anchura**2)-(2*anchura*xArriba)+(xArriba**2)+(altura**2);
-    let yArriba = (-(-2*altura)-Math.sqrt(((-2*altura)**2)-(4*c2)))/2;
-    let yDcha = ((altura**2)-(sensorxy**2)+(sensorx0**2))/(2*altura);
-    let c = -(sensorx0**2)+(yDcha**2)+(anchura**2);
-    let xDcha = (-(-2*anchura)-Math.sqrt(((-2*anchura)**2)-(4*c)))/2;
-    
-    
-    
-    let mediaX = media(xAbajo,xArriba,xDcha,xIzda);//Estas líneas hacen una media con los resultados obtenidos, para así si hay alguna discordancia entre medidas poder solucionar
-    let mediaY = media(yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
-    //El procedimiento de hacer la media está más enfocado a los sensores, ya que estos pueden cometer cierto error, sin embargo en el navegador es prácticamente imposible que surja
-    
-    mediaX = Number(mediaX.toFixed(2))
-    mediaY = Number(mediaY.toFixed(2))
-    
-    let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
-    let beta = Math.asin ((anchura-mediaX)/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
-    let gamma = Math.asin ((altura-mediaY)/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
-    let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
-    
-    alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
-    beta = (180*beta)/Math.PI;//teniendo en cuenta que 180ª grados son PI radianes
-    gamma = (180*gamma)/Math.PI;//Con esto en mente estas líneas son dicha regla de tres
-    delta = (180*delta)/Math.PI;
-    
-    
-    sensor00 = Number(sensor00.toFixed(2)); // Esto son simples aproximaciones para facilitar el entendimiento
-    sensorx0 = Number(sensorx0.toFixed(2));
-    sensor0y = Number (sensor0y.toFixed(2));
-    sensorxy = Number(sensorxy.toFixed(2));
-    alfa = Number(alfa.toFixed(2));
-    beta = Number(beta.toFixed(2));
-    gamma = Number(gamma.toFixed(2));
-    delta = Number(delta.toFixed(2));
-    return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];
+    escribirCoordenadas(numPts);
 }
 
 
@@ -320,62 +264,6 @@ function movimientoPunto2 (numPts) {
         movimientoPunto3(numPts)
     } 
 }
-function calcularPunto2 (altura,anchura) {
-    //Simulación del sensor
-    let abscisas = parseFloat(document.getElementById('divInterno2').style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
-    let oordenadasOpuestas = parseFloat(document.getElementById('divInterno2').style.top)+5;//para que más tarde al pasarlo a los sensores el código pueda seguir 
-    let oordenadas = altura - oordenadasOpuestas;//funcionando y no tener que adaptarlo, solo tener que adaptar el valor de las variable llamadas sensorWW
-    let abscisasOpuestas = anchura - abscisas;//Para el bottom y el right se calcula por diferencia ya que al intentar hallar la distancia a dichos bordes, devolvía el valor de undefined
-    let sensor00 = Math.sqrt((abscisas**2)+(oordenadas**2));//Se calcula obteniendo la distancia a los bordes del recipiente y haciendo un teorema de Pitágoras para hallar la hipotenusa
-    let sensorx0 = Math.sqrt((abscisasOpuestas**2)+(oordenadas**2));
-    let sensor0y = Math.sqrt((abscisas**2)+(oordenadasOpuestas**2));
-    let sensorxy = Math.sqrt(((anchura-abscisas)**2)+(oordenadasOpuestas)**2);
-    //Fin simulación sensores
-    
-    
-    let xAbajo = ((anchura**2)-(sensorx0**2)+(sensor00**2))/(2*anchura); //En todas estas líneas de código se calculan las coordenadas utilizando la fórmula clave
-    let yAbajo =Math.abs(((anchura-xAbajo)**2)-(sensorx0**2));//Esta fórmula es un sistema de ecuaciones cuadráticas siendo cada una de estas ecuaciones un teorema de Pitágoras, en el cual conocemos la hipotenusa
-    yAbajo = Math.sqrt(yAbajo);// siendo el punto final el mismo para ambos triángulos
-    let yIzda =  ((altura**2)-(sensor0y**2)+(sensor00**2))/(2*altura);//Este sistema se repite 4 veces, una por cada uno de los lados del contenedor, para así utilizar todos los sensores
-    let xIzda = Math.abs(((altura-yIzda)**2)-(sensor0y**2));// y obtener el resultado más preciso posible
-    xIzda = Math.sqrt(xIzda);
-    let xArriba = anchura-((anchura**2)-(sensor0y**2)+(sensorxy**2))/(2*anchura);
-    let c2 = -(sensorxy**2)+(anchura**2)-(2*anchura*xArriba)+(xArriba**2)+(altura**2);
-    let yArriba = (-(-2*altura)-Math.sqrt(((-2*altura)**2)-(4*c2)))/2;
-    let yDcha = ((altura**2)-(sensorxy**2)+(sensorx0**2))/(2*altura);
-    let c = -(sensorx0**2)+(yDcha**2)+(anchura**2);
-    let xDcha = (-(-2*anchura)-Math.sqrt(((-2*anchura)**2)-(4*c)))/2;
-    
-    
-    
-    let mediaX = media(xAbajo,xArriba,xDcha,xIzda);//Estas líneas hacen una media con los resultados obtenidos, para así si hay alguna discordancia entre medidas poder solucionar
-    let mediaY = media(yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
-    //El procedimiento de hacer la media está más enfocado a los sensores, ya que estos pueden cometer cierto error, sin embargo en el navegador es prácticamente imposible que surja
-    
-    mediaX = Number(mediaX.toFixed(2))
-    mediaY = Number(mediaY.toFixed(2))
-    
-    let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
-    let beta = Math.asin ((anchura-mediaX)/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
-    let gamma = Math.asin ((altura-mediaY)/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
-    let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
-    
-    alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
-    beta = (180*beta)/Math.PI;//teniendo en cuenta que 180ª grados son PI radianes
-    gamma = (180*gamma)/Math.PI;//Con esto en mente estas líneas son dicha regla de tres
-    delta = (180*delta)/Math.PI;
-    
-    
-    sensor00 = Number(sensor00.toFixed(2)); // Esto son simples aproximaciones para facilitar el entendimiento
-    sensorx0 = Number(sensorx0.toFixed(2));
-    sensor0y = Number (sensor0y.toFixed(2));
-    sensorxy = Number(sensorxy.toFixed(2));
-    alfa = Number(alfa.toFixed(2));
-    beta = Number(beta.toFixed(2));
-    gamma = Number(gamma.toFixed(2));
-    delta = Number(delta.toFixed(2));
-    return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];
-}
 
 
 
@@ -418,65 +306,9 @@ function movimientoPunto3 (numPts) {
         } 
     })
     if(numPts > 3) {
-        movimientoPunto4(numPts)
+        movimientoPunto4();
     }
 }
-function calcularPunto3 (altura,anchura) {
-    //Simulación del sensor
-    let abscisas = parseFloat(document.getElementById('divInterno3').style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
-    let oordenadasOpuestas = parseFloat(document.getElementById('divInterno3').style.top)+5;//para que más tarde al pasarlo a los sensores el código pueda seguir 
-    let oordenadas = altura - oordenadasOpuestas;//funcionando y no tener que adaptarlo, solo tener que adaptar el valor de las variable llamadas sensorWW
-    let abscisasOpuestas = anchura - abscisas;//Para el bottom y el right se calcula por diferencia ya que al intentar hallar la distancia a dichos bordes, devolvía el valor de undefined
-    let sensor00 = Math.sqrt((abscisas**2)+(oordenadas**2));//Se calcula obteniendo la distancia a los bordes del recipiente y haciendo un teorema de Pitágoras para hallar la hipotenusa
-    let sensorx0 = Math.sqrt((abscisasOpuestas**2)+(oordenadas**2));
-    let sensor0y = Math.sqrt((abscisas**2)+(oordenadasOpuestas**2));
-    let sensorxy = Math.sqrt(((anchura-abscisas)**2)+(oordenadasOpuestas)**2);
-    //Fin simulación sensores
-    
-    
-    let xAbajo = ((anchura**2)-(sensorx0**2)+(sensor00**2))/(2*anchura); //En todas estas líneas de código se calculan las coordenadas utilizando la fórmula clave
-    let yAbajo =Math.abs(((anchura-xAbajo)**2)-(sensorx0**2));//Esta fórmula es un sistema de ecuaciones cuadráticas siendo cada una de estas ecuaciones un teorema de Pitágoras, en el cual conocemos la hipotenusa
-    yAbajo = Math.sqrt(yAbajo);// siendo el punto final el mismo para ambos triángulos
-    let yIzda =  ((altura**2)-(sensor0y**2)+(sensor00**2))/(2*altura);//Este sistema se repite 4 veces, una por cada uno de los lados del contenedor, para así utilizar todos los sensores
-    let xIzda = Math.abs(((altura-yIzda)**2)-(sensor0y**2));// y obtener el resultado más preciso posible
-    xIzda = Math.sqrt(xIzda);
-    let xArriba = anchura-((anchura**2)-(sensor0y**2)+(sensorxy**2))/(2*anchura);
-    let c2 = -(sensorxy**2)+(anchura**2)-(2*anchura*xArriba)+(xArriba**2)+(altura**2);
-    let yArriba = (-(-2*altura)-Math.sqrt(((-2*altura)**2)-(4*c2)))/2;
-    let yDcha = ((altura**2)-(sensorxy**2)+(sensorx0**2))/(2*altura);
-    let c = -(sensorx0**2)+(yDcha**2)+(anchura**2);
-    let xDcha = (-(-2*anchura)-Math.sqrt(((-2*anchura)**2)-(4*c)))/2;
-    
-    
-    
-    let mediaX = media(xAbajo,xArriba,xDcha,xIzda);//Estas líneas hacen una media con los resultados obtenidos, para así si hay alguna discordancia entre medidas poder solucionar
-    let mediaY = media(yAbajo,yArriba,yDcha,yIzda);//dicha discordancia cometiendo el mínimo error posible.
-    //El procedimiento de hacer la media está más enfocado a los sensores, ya que estos pueden cometer cierto error, sin embargo en el navegador es prácticamente imposible que surja
-    
-    mediaX = Number(mediaX.toFixed(2))
-    mediaY = Number(mediaY.toFixed(2))
-    
-    let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
-    let beta = Math.asin ((anchura-mediaX)/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
-    let gamma = Math.asin ((altura-mediaY)/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
-    let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
-    
-    alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
-    beta = (180*beta)/Math.PI;//teniendo en cuenta que 180ª grados son PI radianes
-    gamma = (180*gamma)/Math.PI;//Con esto en mente estas líneas son dicha regla de tres
-    delta = (180*delta)/Math.PI;
-    
-    
-    sensor00 = Number(sensor00.toFixed(2)); // Esto son simples aproximaciones para facilitar el entendimiento
-    sensorx0 = Number(sensorx0.toFixed(2));
-    sensor0y = Number (sensor0y.toFixed(2));
-    sensorxy = Number(sensorxy.toFixed(2));
-    alfa = Number(alfa.toFixed(2));
-    beta = Number(beta.toFixed(2));
-    gamma = Number(gamma.toFixed(2));
-    delta = Number(delta.toFixed(2));
-    return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];
-}
 
 
 
@@ -487,7 +319,7 @@ function calcularPunto3 (altura,anchura) {
 
 
 
-function movimientoPunto4 (numPts) {
+function movimientoPunto4 () {
     addEventListener('keypress',() => {
         let tecla = event.key
         let anchura = parseInt(document.getElementById('width').value);
@@ -522,10 +354,17 @@ function movimientoPunto4 (numPts) {
         }  
     })
 }
-function calcularPunto4 (altura,anchura) {
-        //Simulación del sensor
-        let abscisas = parseFloat(document.getElementById('divInterno4').style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
-        let oordenadasOpuestas = parseFloat(document.getElementById('divInterno4').style.top)+5;//para que más tarde al pasarlo a los sensores el código pueda seguir 
+
+
+class CalculoCoordenadas {
+    constructor (id) {
+        this.id = id;
+    }  
+    calculoCoordenadas () {
+        let anchura = parseInt(document.getElementById('width').value);
+        let altura = parseInt(document.getElementById('height').value);
+        let abscisas = parseFloat(document.getElementById(this.id).style.left); //Este bloque de código, simula la señal que daría el sensor de distancia,
+        let oordenadasOpuestas = parseFloat(document.getElementById(this.id).style.top)+5;//para que más tarde al pasarlo a los sensores el código pueda seguir 
         let oordenadas = altura - oordenadasOpuestas;//funcionando y no tener que adaptarlo, solo tener que adaptar el valor de las variable llamadas sensorWW
         let abscisasOpuestas = anchura - abscisas;//Para el bottom y el right se calcula por diferencia ya que al intentar hallar la distancia a dichos bordes, devolvía el valor de undefined
         let sensor00 = Math.sqrt((abscisas**2)+(oordenadas**2));//Se calcula obteniendo la distancia a los bordes del recipiente y haciendo un teorema de Pitágoras para hallar la hipotenusa
@@ -577,10 +416,8 @@ function calcularPunto4 (altura,anchura) {
         gamma = Number(gamma.toFixed(2));
         delta = Number(delta.toFixed(2));
         return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];
+    }
 }
-
-
-
 
 
 function escribirCoordenadas (numPts,altura,anchura) {
@@ -588,10 +425,10 @@ function escribirCoordenadas (numPts,altura,anchura) {
         let tecla = event.key;
         if (tecla == 'Enter' && !comprobarDistancia) {
             if (document.getElementById('inferior').style.display == 'none') {
-                let coordenadasPunto1 = calculoPunto1(altura,anchura);
-                let coordenadasPunto2 = calcularPunto2(altura,anchura);
-                let coordenadasPunto3 = calcularPunto3(altura,anchura);
-                let coordenadasPunto4 = calcularPunto4(altura,anchura);
+                let coordenadasPunto1 = punto1.calculoCoordenadas();
+                let coordenadasPunto2 = punto2.calculoCoordenadas();
+                let coordenadasPunto3 = punto3.calculoCoordenadas();
+                let coordenadasPunto4 = punto4.calculoCoordenadas();
                 switch (numPts) {
                     case 1:
                         document.getElementById('Instrucciones').innerHTML = `
