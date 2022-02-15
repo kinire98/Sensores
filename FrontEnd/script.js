@@ -100,7 +100,7 @@ function media (x1,x2,x3,x4) { //Esta función calcula la media de las coordenad
     let media2 = x1 + x2 + x3 + x4;
     return media2/4
 }
-function repetir () {//Esta función permite volver al menu inicial
+function volver () {//Esta función permite volver al menu inicial
     window.location.reload();
 }
 function cambiarPosicion () { //Esta función permite
@@ -236,7 +236,7 @@ addEventListener('keypress', () => {
                         <li class="quitarMarcador"><b>Sensor arriba derecha:</b></li>
                         <li>(${sensorxy}px,${gamma}º)</li>
                     </ul> <br>
-                    <button onclick="repetir()">Salir</button>
+                    <button onclick="volver()">Salir</button>
                     <button onclick="cambiarPosicion()">Cambiar posición</button>
                 `;
                 let datos = {

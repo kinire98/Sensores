@@ -14,7 +14,7 @@
 </head>
 <body>
     <div id="btn-volver" style="display:none;">
-        <i class="fas fa-home" onclick="repetir()"></i>
+        <i class="fas fa-home" onclick="volver()"></i>
     </div>
     <div id="superior">
         <div id="inferior">
