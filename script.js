@@ -424,192 +424,162 @@ function escribirCoordenadas (numPts) {
     addEventListener('keypress', () => {
         let tecla = event.key;
         if (tecla == 'Enter') {
-            if (document.getElementById('inferior').style.display == 'none' && !comprobarDistancia) {
-                comprobarDistancia = true;
-                let coordenadasPunto1 = punto1.calculoCoordenadas();
-                let coordenadasPunto2 = punto2.calculoCoordenadas();
-                let coordenadasPunto3 = punto3.calculoCoordenadas();
-                let coordenadasPunto4 = punto4.calculoCoordenadas();
-                switch (numPts) {
-                    case 1:
-                        document.getElementById('Instrucciones').innerHTML = `
-                        <ul>
-                            <li class="negrita">Coordenadas:</li>
-                            <li>(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
-                            <li class="negrita">Coordenadas polares:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
-                        </ul> <br>
-                        <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                        <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button>
-                    `;
-                        break;
-                    case 2:
-                        document.getElementById('Instrucciones').innerHTML = `
-                        <ul>
-                                    <li class="negrita">Coordenadas:</li>
-                                    <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
-                                    <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
-                                    <li class="negrita">Coordenadas polares:</li>
-                                    <li class="negrita">Punto 1:</li>
-                                    <li class="negrita">Sensor abajo izquierda:</li>
-                                    <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
-                                    <li class="negrita">Sensor abajo derecha:</li>
-                                    <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
-                                    <li class="negrita">Sensor arriba izquierda:</li>
-                                    <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
-                                    <li class="negrita">Sensor arriba derecha:</li>
-                                    <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
-                                    <li class="negrita">Punto 2:</li>
-                                    <li class="negrita">Sensor abajo izquierda:</li>
-                                    <li>(${coordenadasPunto2[2]}px,${coordenadasPunto2[6]}º)</li>
-                                    <li class="negrita">Sensor abajo derecha:</li>
-                                    <li>(${coordenadasPunto2[3]}px,${coordenadasPunto2[7]}º)</li>
-                                    <li class="negrita">Sensor arriba izquierda:</li>
-                                    <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
-                                    <li class="negrita">Sensor arriba derecha:</li>
-                                    <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
-                                </ul> <br>
-                                <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                                <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        `
-                        break;
-                    case 3:
-                        document.getElementById('Instrucciones').innerHTML = `
-                        <div style="display: block;" id='primeraPagina'>
-                        <ul>
-                            <li class="negrita">Coordenadas:</li>
-                            <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
-                            <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
-                            <li class="negrita">Coordenadas polares:</li>
-                            <li class="negrita">Punto 1:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
-                            <li class="negrita">Punto 2:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto2[2]}px,${coordenadasPunto2[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto2[3]}px,${coordenadasPunto2[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
-                        </ul> <br>
-                        <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                        <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="segundaPagina()" class="botonEspecial">Página 2</button>
-                        </div>
-                        <div style="display:none;" id='segundaPagina'>
-                        <ul>
-                            <li class="negrita">Coordenadas:</li>
-                            <li>Punto 3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
-                            <li class="negrita">Coordenadas polares:</li>
-                            <li class="negrita">Punto 3:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
-                        </ul><br>
-                        <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                        <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="primeraPagina()" class="botonEspecial">Página 1</button>
-                        </div>
-                        `
-                        break;
-                    case 4:
-                        document.getElementById('Instrucciones').innerHTML = `
-                        <div style="display: block;" id='primeraPagina'>
-                        <ul>
-                            <li class="negrita">Coordenadas:</li>
-                            <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
-                            <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
-                            <li class="negrita">Coordenadas polares:</li>
-                            <li class="negrita">Punto 1:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
-                            <li class="negrita">Punto 2:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto2[2]}px,${coordenadasPunto2[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto2[3]}px,${coordenadasPunto2[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
-                        </ul> <br>
-                        <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                        <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="segundaPagina()" class="botonEspecial">Página 2</button>
-                        </div>
-                        <div style="display:none;" id='segundaPagina'>
-                        <ul>
-                            <li class="negrita">Coordenadas:</li>
-                            <li>Punto 3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
-                            <li>Punto 4:(${coordenadasPunto4[0]}px,${coordenadasPunto4[1]}px)</li>
-                            <li class="negrita">Coordenadas polares:</li>
-                            <li class="negrita">Punto 3:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
-                            <li class="negrita">Punto 4:</li>
-                            <li class="negrita">Sensor abajo izquierda:</li>
-                            <li>(${coordenadasPunto4[2]}px,${coordenadasPunto4[6]}º)</li>
-                            <li class="negrita">Sensor abajo derecha:</li>
-                            <li>(${coordenadasPunto4[3]}px,${coordenadasPunto4[7]}º)</li>
-                            <li class="negrita">Sensor arriba izquierda:</li>
-                            <li>(${coordenadasPunto4[4]}px,${coordenadasPunto4[9]}º)</li>
-                            <li class="negrita">Sensor arriba derecha:</li>
-                            <li>(${coordenadasPunto4[5]}px,${coordenadasPunto4[8]}º)</li>
-                        </ul><br>
-                        <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                        <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button></br>
-                        <button onclick="primeraPagina()" class="botonEspecial">Página 1</button>
-                        </div>
-                        `
-                        break;
-                    default:
-                        alert('que has hecho shiquillo?. Búscate un hobby o algo ¿no?, en vez de dedicarte aquí a romper los programas de los demás, sin vergüenza xD')
-                        break;
-                }
-            }
+            comprobarDistancia = true;
         }
     })
 
 }
+setInterval(() => {
+    if (document.getElementById('inferior').style.display == 'none' && !comprobarDistancia) {
+        let coordenadasPunto1 = punto1.calculoCoordenadas();
+        let coordenadasPunto2 = punto2.calculoCoordenadas();
+        let coordenadasPunto3 = punto3.calculoCoordenadas();
+        let coordenadasPunto4 = punto4.calculoCoordenadas();
+        let numPts = parseInt(document.getElementById('number').value);
+        switch (numPts) {
+            case 1:
+                document.getElementById('Instrucciones').innerHTML = `
+                <ul>
+                    <li class="negrita">Coordenadas:</li>
+                    <li>(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
+                    <li class="negrita">Coordenadas polares:</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
+                </ul> <br>
+                <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
+                <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button>
+            `;
+                break;
+            case 2:
+                document.getElementById('Instrucciones').innerHTML = `
+                <ul>
+                            <li class="negrita">Coordenadas:</li>
+                            <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
+                            <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
+                            <li class="negrita">Coordenadas polares:</li>
+                            <li class="negrita">Punto 1:</li>
+                            <li class="negrita">Sensor abajo izquierda:</li>
+                            <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
+                            <li class="negrita">Sensor abajo derecha:</li>
+                            <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
+                            <li class="negrita">Sensor arriba izquierda:</li>
+                            <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
+                            <li class="negrita">Sensor arriba derecha:</li>
+                            <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
+                            <li class="negrita">Punto 2:</li>
+                            <li class="negrita">Sensor abajo izquierda:</li>
+                            <li>(${coordenadasPunto2[2]}px,${coordenadasPunto2[6]}º)</li>
+                            <li class="negrita">Sensor abajo derecha:</li>
+                            <li>(${coordenadasPunto2[3]}px,${coordenadasPunto2[7]}º)</li>
+                            <li class="negrita">Sensor arriba izquierda:</li>
+                            <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
+                            <li class="negrita">Sensor arriba derecha:</li>
+                            <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
+                        </ul> <br>
+                        <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
+                `
+                break;
+            case 3:
+                document.getElementById('Instrucciones').innerHTML = `
+                <div>
+                <ul>
+                <li class="negrita">Coordenadas:</li>
+                    <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
+                    <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
+                    <li>Punto 3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
+                    <li class="negrita">Coordenadas polares:</li>
+                    <li class="negrita">Punto 1:</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
+                    <li class="negrita">Punto 2:</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto2[2]}px,${coordenadasPunto2[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto2[3]}px,${coordenadasPunto2[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
+                    <li class="negrita">Punto 3:</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
+                </ul> <br>
+                <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
+                `
+                break;
+            case 4:
+                document.getElementById('Instrucciones').innerHTML = `
+                <div>
+                <ul>
+                    <li class="negrita">Coordenadas:</li>
+                    <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
+                    <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
+                    <li>Punto 3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
+                    <li>Punto 4:(${coordenadasPunto4[0]}px,${coordenadasPunto4[1]}px)</li>
+                    <li class="negrita">Coordenadas polares:</li>
+                    <li class="negrita">Punto 1:</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto1[2]}px,${coordenadasPunto1[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto1[3]}px,${coordenadasPunto1[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto1[4]}px,${coordenadasPunto1[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
+                    <li class="negrita">Punto 2:</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto2[2]}px,${coordenadasPunto2[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto2[3]}px,${coordenadasPunto2[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
+                    <li class="negrita">Punto 4:</li>
+                    <li class="negrita">Sensor abajo izquierda:</li>
+                    <li>(${coordenadasPunto4[2]}px,${coordenadasPunto4[6]}º)</li>
+                    <li class="negrita">Sensor abajo derecha:</li>
+                    <li>(${coordenadasPunto4[3]}px,${coordenadasPunto4[7]}º)</li>
+                    <li class="negrita">Sensor arriba izquierda:</li>
+                    <li>(${coordenadasPunto4[4]}px,${coordenadasPunto4[9]}º)</li>
+                    <li class="negrita">Sensor arriba derecha:</li>
+                    <li>(${coordenadasPunto4[5]}px,${coordenadasPunto4[8]}º)</li>
+                </ul> <br>
+                <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
+                </div>
+                `;
+                
+                break;
+            default:
+                alert('que has hecho shiquillo?. Búscate un hobby o algo ¿no?, en vez de dedicarte aquí a romper los programas de los demás, sin vergüenza xD')
+                break;
+        }
+    }
+}, 100);
 
-
-function primeraPagina() {
-    document.getElementById('segundaPagina').style.display = 'none';
-    document.getElementById('primeraPagina').style.display = 'block';
-}
-function segundaPagina() {
-    document.getElementById('primeraPagina').style.display = 'none';
-    document.getElementById('segundaPagina').style.display = 'block';
-}
