@@ -23,8 +23,8 @@ const generarLienzo = () => {
     let altura = parseInt(document.getElementById('height').value);
     if (!anchura || !altura ) { //Comprueba que se hayan introducido ambos valores, en caso contrario saltará una alerta que comunicará que ambos datos son obligatorios
         alert('Introduce los valores de altura Y altura ')
-    } else if (altura < 500 || altura > 1000 || anchura < 500 || anchura > 1000){//Aquí se comprueba que los valores introducidos estén entre 500 y 1000
-        alert('Tanto la altura como la anchura tienen que estar entre 500 y 1000')
+    } else if (altura < 500 || altura > 900 || anchura < 500 || anchura > 900){//Aquí se comprueba que los valores introducidos estén entre 500 y 1000
+        alert('Tanto la altura como la anchura tienen que estar entre 500 y 900')
     } else if ((altura % 50 != 0) || (anchura % 50 != 0)) { //Comprueba que el número sea múltiplo de 50
         alert ('Introduce un número multiplo de 50');
     } else {//Y aquí se otorgan los estilos que hacen que el lienzo y el punto sean visibles
