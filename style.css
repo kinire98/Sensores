@@ -174,7 +174,7 @@ label:hover,li:hover,p:hover {
     color: #4FBDBA;
     cursor: pointer;
 }
-#instrucciones,p,ul,li,b,i {
+p,ul,li,b,i {
     background: #24A19C;
     color: #072227;
 }
@@ -185,6 +185,7 @@ label:hover,li:hover,p:hover {
 #instrucciones {
     margin: 0;
     border: 0;
+    position: relative;
 }
 ul {
     padding: 15%;
@@ -198,4 +199,29 @@ ul {
     padding-bottom:15px;
     padding-left: 95px;
     padding-right: 95px;
+}
+#izda {
+    position: relative;
+    right: 162.5px;
+}
+#dcha {
+    position: relative;
+    top: -653px;
+    padding: bottom 5px;
+}
+#botonCoordenadas {
+    position: relative;
+    top: 800px;
+    right: -1590px;
+}
+#izda2 {
+    position: relative;
+    right: 250px;
+}
+#dcha2 {
+    position: relative;
+    top: -400px;
+}
+.hola {
+    color: #072227;
 }

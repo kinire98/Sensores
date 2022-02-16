@@ -438,6 +438,7 @@ setInterval(() => {
         let numPts = parseInt(document.getElementById('number').value);
         switch (numPts) {
             case 1:
+                document.getElementById('botonCoordenadas').style.display = 'block'
                 document.getElementById('Instrucciones').innerHTML = `
                 <ul>
                     <li class="negrita">Coordenadas:</li>
@@ -452,11 +453,10 @@ setInterval(() => {
                     <li class="negrita">Sensor arriba derecha:</li>
                     <li>(${coordenadasPunto1[5]}px,${coordenadasPunto1[8]}º)</li>
                 </ul> <br>
-                <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                <button onclick="cambiarPosicion()" class="botonesPanel">Cambiar posición</button>
             `;
                 break;
             case 2:
+                document.getElementById('botonCoordenadas').style.display = 'block'
                 document.getElementById('Instrucciones').innerHTML = `
                 <ul>
                             <li class="negrita">Coordenadas:</li>
@@ -482,17 +482,16 @@ setInterval(() => {
                             <li class="negrita">Sensor arriba derecha:</li>
                             <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
                         </ul> <br>
-                        <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
                 `
                 break;
             case 3:
+                document.getElementById('botonCoordenadas').style.display = 'block'
                 document.getElementById('Instrucciones').innerHTML = `
-                <div>
+                <div id="izda">
                 <ul>
                 <li class="negrita">Coordenadas:</li>
                     <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
                     <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
-                    <li>Punto 3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
                     <li class="negrita">Coordenadas polares:</li>
                     <li class="negrita">Punto 1:</li>
                     <li class="negrita">Sensor abajo izquierda:</li>
@@ -512,28 +511,29 @@ setInterval(() => {
                     <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
                     <li class="negrita">Sensor arriba derecha:</li>
                     <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
-                    <li class="negrita">Punto 3:</li>
-                    <li class="negrita">Sensor abajo izquierda:</li>
-                    <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
-                    <li class="negrita">Sensor abajo derecha:</li>
-                    <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
-                    <li class="negrita">Sensor arriba izquierda:</li>
-                    <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
-                    <li class="negrita">Sensor arriba derecha:</li>
-                    <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
-                </ul> <br>
-                <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
+                    </ul> 
+                    </div>
+                    <div id="dcha2">
+                    <li>Punto 3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
+                        <li class="negrita">Sensor abajo izquierda:</li>
+                        <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
+                        <li class="negrita">Sensor abajo derecha:</li>
+                        <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
+                        <li class="negrita">Sensor arriba izquierda:</li>
+                        <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
+                        <li class="negrita">Sensor arriba derecha:</li>
+                        <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
+                    </div><br>
                 `
                 break;
             case 4:
+                document.getElementById('botonCoordenadas').style.display = 'block'
                 document.getElementById('Instrucciones').innerHTML = `
-                <div>
+                <div id="izda">
                 <ul>
                     <li class="negrita">Coordenadas:</li>
-                    <li>Punto 1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
-                    <li>Punto 2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
-                    <li>Punto 3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
-                    <li>Punto 4:(${coordenadasPunto4[0]}px,${coordenadasPunto4[1]}px)</li>
+                    <li>1:(${coordenadasPunto1[0]}px,${coordenadasPunto1[1]}px)</li>
+                    <li>2:(${coordenadasPunto2[0]}px,${coordenadasPunto2[1]}px)</li>
                     <li class="negrita">Coordenadas polares:</li>
                     <li class="negrita">Punto 1:</li>
                     <li class="negrita">Sensor abajo izquierda:</li>
@@ -553,26 +553,35 @@ setInterval(() => {
                     <li>(${coordenadasPunto2[4]}px,${coordenadasPunto2[9]}º)</li>
                     <li class="negrita">Sensor arriba derecha:</li>
                     <li>(${coordenadasPunto2[5]}px,${coordenadasPunto2[8]}º)</li>
-                    <li class="negrita">Sensor abajo izquierda:</li>
-                    <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
-                    <li class="negrita">Sensor abajo derecha:</li>
-                    <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
-                    <li class="negrita">Sensor arriba izquierda:</li>
-                    <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
-                    <li class="negrita">Sensor arriba derecha:</li>
-                    <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
-                    <li class="negrita">Punto 4:</li>
-                    <li class="negrita">Sensor abajo izquierda:</li>
-                    <li>(${coordenadasPunto4[2]}px,${coordenadasPunto4[6]}º)</li>
-                    <li class="negrita">Sensor abajo derecha:</li>
-                    <li>(${coordenadasPunto4[3]}px,${coordenadasPunto4[7]}º)</li>
-                    <li class="negrita">Sensor arriba izquierda:</li>
-                    <li>(${coordenadasPunto4[4]}px,${coordenadasPunto4[9]}º)</li>
-                    <li class="negrita">Sensor arriba derecha:</li>
-                    <li>(${coordenadasPunto4[5]}px,${coordenadasPunto4[8]}º)</li>
-                </ul> <br>
-                <button onclick="repetir()" class="botonesPanel">Cambiar medidas lienzo</button>
-                </div>
+                    
+                    </div>
+                    <div id="dcha">
+                        <ul>
+                            <li style="list-style-type: none;"></li>
+                            <li>3:(${coordenadasPunto3[0]}px,${coordenadasPunto3[1]}px)</li>
+                            <li>4:(${coordenadasPunto4[0]}px,${coordenadasPunto4[1]}px)</li>
+                            <li class="negrita">Coordenadas polares:</li>
+                            <li class="negrita">Punto3:</li>
+                            <li class="negrita">Sensor abajo izquierda:</li>
+                            <li>(${coordenadasPunto3[2]}px,${coordenadasPunto3[6]}º)</li>
+                            <li class="negrita">Sensor abajo derecha:</li>
+                            <li>(${coordenadasPunto3[3]}px,${coordenadasPunto3[7]}º)</li>
+                            <li class="negrita">Sensor arriba izquierda:</li>
+                            <li>(${coordenadasPunto3[4]}px,${coordenadasPunto3[9]}º)</li>
+                            <li class="negrita">Sensor arriba derecha:</li>
+                            <li>(${coordenadasPunto3[5]}px,${coordenadasPunto3[8]}º)</li>
+                            <li class="negrita">Punto 4:</li>
+                            <li class="negrita">Sensor abajo izquierda:</li>
+                            <li>(${coordenadasPunto4[2]}px,${coordenadasPunto4[6]}º)</li>
+                            <li class="negrita">Sensor abajo derecha:</li>
+                            <li>(${coordenadasPunto4[3]}px,${coordenadasPunto4[7]}º)</li>
+                            <li class="negrita">Sensor arriba izquierda:</li>
+                            <li>(${coordenadasPunto4[4]}px,${coordenadasPunto4[9]}º)</li>
+                            <li class="negrita">Sensor arriba derecha:</li>
+                            <li>(${coordenadasPunto4[5]}px,${coordenadasPunto4[8]}º)</li>
+                            <br>
+                        </ul>
+                    </div>
                 `;
                 
                 break;
