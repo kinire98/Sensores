@@ -2,9 +2,12 @@
 function movimientoSelect(){
     verMovimiento = 1;
     let nMovimiento = document.getElementById("movimientoBBDD").value; // OBTIENE EL VALOR DEL MOVIMIENTO SELECCIONADO
-    let movimiento = lista_movimientosJS[nMovimiento]; // OBTIENE EL STRING CON LOS MOVIMIENTOS
-    let altura = lista_alturaJS[nMovimiento];
-    
+    let movimiento1 = lista_movimientos1JS[nMovimiento]; // OBTIENE EL STRING CON LOS MOVIMIENTOS
+    let movimiento2 = lista_movimientos2JS[nMovimiento];
+    let movimiento3 = lista_movimientos3JS[nMovimiento];
+    let movimiento4 = lista_movimientos4JS[nMovimiento];
+
+    let altura = lista_alturaJS[nMovimiento];   
     let anchura = lista_anchuraJS[nMovimiento];
     
  
@@ -14,7 +17,9 @@ function movimientoSelect(){
         alert('Tanto la altura como la anchura tienen que estar entre 500 y 1000')
     } else if ((altura % 50 != 0) || (anchura % 50 != 0)) { //Comprueba que el número sea múltiplo de 50
         alert ('Introduce un número multiplo de 50');
-    } else { //Y aquí se otorgan los estilos que hacen que el lienzo y el punto sean visibles
+    } else {
+        
+        //Y aquí se otorgan los estilos que hacen que el lienzo y el punto sean visibles
         document.getElementById('lienzo').style.width = anchura + 'px'
         document.getElementById('lienzo').style.height = altura +'px'
         document.getElementById('lienzo').style.border = '5px solid black'
@@ -32,6 +37,33 @@ function movimientoSelect(){
         document.getElementById('form_ver').style.display = 'none';
         document.getElementById('btn-volver').style.display = 'block';
 
+        if (movimiento2.length > 0) {
+            document.getElementById('divInterno2').style.display = 'block';
+            document.getElementById('divInterno2').style.background = '#FDEFF4'
+            document.getElementById('divInterno2').style.height = '5px';
+            document.getElementById('divInterno2').style.width ='5px';
+            document.getElementById('divInterno2').style.border = '1px solid #FDEFF4';
+            document.getElementById('divInterno2').style.top = altura/2 + 'px'
+            document.getElementById('divInterno2').style.left = anchura/2 + 'px';
+            if (movimiento3.length > 0) {
+                document.getElementById('divInterno3').style.display = 'block';
+                document.getElementById('divInterno3').style.background = '#F1D00A'
+                document.getElementById('divInterno3').style.height = '5px';
+                document.getElementById('divInterno3').style.width ='5px';
+                document.getElementById('divInterno3').style.border = '1px solid #F1D00A';
+                document.getElementById('divInterno3').style.top = altura/2 + 'px'
+                document.getElementById('divInterno3').style.left = anchura/2 + 'px';            
+                if (movimiento4.length > 0) {
+                    document.getElementById('divInterno4').style.display = 'block';
+                    document.getElementById('divInterno4').style.background = '#FF5C8D'
+                    document.getElementById('divInterno4').style.height = '5px';
+                    document.getElementById('divInterno4').style.width ='5px';
+                    document.getElementById('divInterno4').style.border = '1px solid #FF5C8D';
+                    document.getElementById('divInterno4').style.top = altura/2 + 'px'
+                    document.getElementById('divInterno4').style.left = anchura/2 + 'px';                
+                }
+            }
+        }
 
         switch (anchura) {
             case 500: case 550:
@@ -81,8 +113,18 @@ function movimientoSelect(){
                 break;
         }
 
-        let arriba = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
-        let izquierda = parseFloat(document.getElementById('divInterno').style.left);
+        let arriba1 = parseFloat(document.getElementById('divInterno').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
+        let izquierda1 = parseFloat(document.getElementById('divInterno').style.left);
+
+        let arriba2 = parseFloat(document.getElementById('divInterno2').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
+        let izquierda2 = parseFloat(document.getElementById('divInterno2').style.left);
+
+        let arriba3 = parseFloat(document.getElementById('divInterno3').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
+        let izquierda3 = parseFloat(document.getElementById('divInterno3').style.left);
+
+        let arriba4 = parseFloat(document.getElementById('divInterno4').style.top); //Estas variables adquieren el valor de los píxeles que le faltan al punto para llegar al borde superior o izquierdo del recipiente
+        let izquierda4 = parseFloat(document.getElementById('divInterno4').style.left);
+        console.log(arriba1);
         
       /*  for(let numMov = 0; numMov < movimiento.length; numMov++){
 
@@ -109,25 +151,79 @@ function movimientoSelect(){
         let numMov = 0;
         let letra = 'a';
         setInterval(function() {
-            if(numMov == movimiento.length){
+            if(numMov == movimiento1.length){
                 return "salir"; // SALIR DEL BUCLE
             }
-            letra = movimiento.charAt(numMov);
+            letra = movimiento1.charAt(numMov);
             if(letra == 'w'){
-                arriba = arriba - 10;
-                document.getElementById('divInterno').style.top = arriba +'px';
+                arriba1 = arriba1 - 10;
+                document.getElementById('divInterno').style.top = arriba1 +'px';
             }
             if(letra == 'a'){
-                izquierda = izquierda - 10;
-                document.getElementById('divInterno').style.left = izquierda +'px';
+                izquierda1 = izquierda1 - 10;
+                document.getElementById('divInterno').style.left = izquierda1 +'px';
             }
             if(letra == 's'){
-                arriba = arriba + 10;
-                document.getElementById('divInterno').style.top = arriba +'px';
+                arriba1 = arriba1 + 10;
+                document.getElementById('divInterno').style.top = arriba1 +'px';
             }
             if(letra == 'd'){
-                izquierda = izquierda + 10;
-                document.getElementById('divInterno').style.left = izquierda + 10  +'px';
+                izquierda1 = izquierda1 + 10;
+                document.getElementById('divInterno').style.left = izquierda1 +'px';
+            }
+            // -- MOV 2
+            letra = movimiento2.charAt(numMov);
+            if(letra == 't'){
+                arriba2 = arriba2 - 10;
+                document.getElementById('divInterno2').style.top = arriba2 +'px';
+            }
+            if(letra == 'f'){
+                izquierda2 = izquierda2 - 10;
+                document.getElementById('divInterno2').style.left = izquierda2 +'px';
+            }
+            if(letra == 'g'){
+                arriba2 = arriba2 + 10;
+                document.getElementById('divInterno2').style.top = arriba2 +'px';
+            }
+            if(letra == 'h'){
+                izquierda2 = izquierda2 + 10;
+                document.getElementById('divInterno2').style.left = izquierda2 +'px';
+            }
+            // -- MOV 3
+            letra = movimiento3.charAt(numMov);
+            if(letra == 'j'){
+                arriba3 = arriba3 - 10;
+                document.getElementById('divInterno3').style.top = arriba3 +'px';
+            }
+            if(letra == 'n'){
+                izquierda3 = izquierda3 - 10;
+                document.getElementById('divInterno3').style.left = izquierda3 +'px';
+            }
+            if(letra == 'm'){
+                arriba3 = arriba3 + 10;
+                document.getElementById('divInterno3').style.top = arriba3 +'px';
+            }
+            if(letra == ','){
+                izquierda3 = izquierda3 + 10;
+                document.getElementById('divInterno3').style.left = izquierda3 +'px';
+            }
+            // -- MOV 4
+            letra = movimiento4.charAt(numMov);
+            if(letra == 'o'){
+                arriba4 = arriba4 - 10;
+                document.getElementById('divInterno4').style.top = arriba4 +'px';
+            }
+            if(letra == 'k'){
+                izquierda4 = izquierda4 - 10;
+                document.getElementById('divInterno4').style.left = izquierda4 +'px';
+            }
+            if(letra == 'l'){
+                arriba4 = arriba4 + 10;
+                document.getElementById('divInterno4').style.top = arriba4 +'px';
+            }
+            if(letra == 'ñ'){
+                izquierda4 = izquierda4 + 10;
+                document.getElementById('divInterno4').style.left = izquierda4 +'px';
             }
             numMov++;
         }, 100);

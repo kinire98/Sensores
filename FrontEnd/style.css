@@ -1,105 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-/*
+*{
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background:#072227 ;
+}
 #lienzo {
     height: 0;
     width: 0;
     border: 0;
     position: relative;
-    align-items: center;
     z-index: 1;
     right: auto;
     top: auto;
-    /*
-    Los estilos de los div con el movimiento y las instrucciones hay que cambiarlos
-    y cambiar su tamaño dinámicamente
-    
-}/
-/*
-#divInterno {
-    height: 0;
-    width: 0;
-    background: none;
-    border:0;
-    position: absolute;
-    display: none;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-    background: #072227;
-}
-#general {
-    display: none;
-    text-align: center;
-}
-#Instrucciones {
-    text-align: left;
-    right: -10px;
-    top: 225px;
-    position: absolute;
-    display: inline;
-    list-style-type: square;
-    padding: 50px;
-}
-#contenedor {
-    margin: 30px auto;
-}
-li {
-    list-style-type:square; 
-}
-.quitarMarcador {
-    list-style-type: none;
-}
-i {
-    list-style-type: square;
-}
-
-
-
-#lienzo {
     background: #24A19C;
-}
-#instrucciones,p,ul,li,b,i {
-    background: #24A19C;
-    color: #072227;
-}
-.botonesPanel {
-    padding: 15px;
-    font-size: inherit;
-}
-#instrucciones {
-    margin: 0;
-    border: 0;
-}
-ul {
-    padding: 15%;
-}
-.negrita {
-    font-style: italic;
-    font-weight: 900;
-}*/
-
-
-*{
-    margin: 0;
-    padding: 0;
-}
-body{
-    background-color: #CAF0F8;
-}
-#lienzo {
-    height: 0;
-    width: 0;
-    border: 0;
-    position: relative;
-    align-items: center;
-    z-index: 1;
-    right: 50%;
-    top: auto;
-
-    margin: 30px auto;
-    text-align: center;
     /*
     Los estilos de los div con el movimiento y las instrucciones hay que cambiarlos
     y cambiar su tamaño dinámicamente
@@ -112,131 +27,209 @@ body{
     border:0;
     position: absolute;
     display: none;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    top:auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
     z-index: 2;
+}
+#divInterno2 {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: 3;
+}
+#divInterno3 {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: 4;
+}
+#divInterno4 {
+    height: 0;
+    width: 0;
+    background: none;
+    border:0;
+    position: absolute;
+    display: none;
+    top: auto;
+    left: auto;
+    bottom: auto;
+    right: auto;
+    z-index: 5;
+    background:#FF5C8D;
+    border: 5px solid #FF5C8D;
+}
+.divInternoo{
+    background: #072227;
+    border: 5px solid #072227;
+}
+.divInternoo2 {
+    background:#FDEFF4;
+    border: 5px solid #FDEFF4;
+}
+.divInternoo3 {
+    background:#F1D00A;
+    border: 5px solid #F1D00A;
+}
+.divInternoo4 {
+    background:#FF5C8D;
+    border: 5px solid #FF5C8D;
 }
 #general {
     display: none;
     text-align: center;
 }
 #Instrucciones {
-    border: 5px solid #03045E;
     text-align: left;
-   /* right: -10px;
-    top: 275px;
-    position: absolute;*/
-    display: block;
+    right: -10px;
+    top: 50px;
+    position: absolute;
+    display: inline;
     list-style-type: square;
     padding: 50px;
-    margin: 40px auto;
-    width: 70%;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 7px 7px 7px 7px;
 }
 #contenedor {
-   
+    position: absolute;
+    right: 10px;
 }
 li {
     list-style-type:square; 
 }
-b {
+.quitarMarcador {
     list-style-type: none;
 }
 i {
     list-style-type: square;
 }
-
-
-/* -----  CSS SARDI ----- */
-
-/* --- FORM 1 --- */
-
-#inferior{
-    text-align: center;
-    margin-top: 30px;
-}
-
-#form_crear{
+#inferior {
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    bottom:30%;
+    height: 30%;
+    width: 50%;
+    margin: 0;
+    padding: 0;
     
+}/*
+#superior {
+    position: relative;
+    margin: 0;
+}*/
+form,button {
+    border: 5px solid black;
+    border-collapse: collapse;
 }
-#form_crear label{
-    font-size: 23px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+button {
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    font-size: 25px;
+    background: #4FBDBA;
 }
-#form_crear input{
-    font-size: 23px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    text-align: center;
-    width: 160px;
-    height: 60px;
-    border: 2px solid #03045E;
-    border-radius: 7px 7px 7px 7px;
-    outline: none;
-    margin: 4px 0px 20px 0px;
-    transition: all 400ms;
-}
-#form_crear input:hover{
-    border: 2px solid #00B4D8;
-}
-
-#ref{
-    width: 200px !important;
-}
-
-button{
-    margin-top: 5px;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px 6px;
-    border: 3px solid #03045E;
-    border-radius: 7px 7px 7px 7px;
-    outline: none;
+button:hover {
+    background:#072227;
+    color: #4FBDBA;
     cursor: pointer;
-    transition: all 400ms;
 }
-button:hover{
-    border: 3px solid #00B4D8;
+form {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 21px;
+    background: #24A19C;
+}
+input {
+    font-size: 18px;
+    background: #4FBDBA;
+    color: #072227;
+}
+input:hover {
+    background:#072227;
+    color: #4FBDBA;
+    cursor: pointer;
+}
+label {
+    background: #24A19C;
+    color: #072227;
+    font-weight: 900;
+}
+label:hover,li:hover,p:hover {
+    background:#072227;
+    color: #4FBDBA;
+    cursor: pointer;
+}
+p,ul,li,b,i {
+    background: #24A19C;
+    color: #072227;
+}
+.botonesPanel {
+    padding: 15px;
+    font-size: inherit;
+}
+#instrucciones {
+    margin: 0;
+    border: 0;
+    position: relative;
+}
+ul {
+    padding: 15%;
+}
+.negrita {
+    font-style: italic;
+    font-weight: 900;
+}
+.botonEspecial {
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left: 95px;
+    padding-right: 95px;
+}
+#izda {
+    position: relative;
+    right: 162.5px;
+}
+#dcha {
+    position: relative;
+    top: -653px;
+    padding: bottom 5px;
+}
+#botonCoordenadas {
+    position: relative;
+    top: 800px;
+    right: -1590px;
+}
+#izda2 {
+    position: relative;
+    right: 250px;
+}
+#dcha2 {
+    position: relative;
+    top: -400px;
+}
+.hola {
+    color: #072227;
 }
 
 
-/* --- FORM 2 --- */
+
+
 
 #form_ver{
-    border-top: 2px solid gray;
-    margin-top: 60px;
-    text-align: center;
-}
-#form_ver h2{
-    margin-top: 35px;
-    font-size: 28px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#movimientoBBDD{
-    width: 140px;
-    height: 50px;
-    outline: none;
-    text-align: center;
-    font-size: 17px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-#movimientoBBDD option{
-
-}
-
-.fa-home{
-    color:rgb(51, 51, 51);
     margin-top: 10px;
-    font-size: 31px;
-    transition: all 400ms;
-    margin-top: 30px;
-    margin-left: 20px;
-    cursor: pointer;
-}
-.fa-home:hover{
-    color: #666666;
 }

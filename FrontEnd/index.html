@@ -15,29 +15,62 @@
                 <input type="number" name="width" id="width" step="50" min="500" max="900"><br>
                 <label for="height">Alto del recipiente (en píxeles):</label><br>
                 <input type="number" name="height" id="height" step="50" min="500" max="900"><br>
+                <label for="number">Número de puntos:</label><br>
+                <input type="number" name="number" id="number" min="1" max="4">
             </form>
             <button onclick="generarLienzo()">Generar lienzo</button>
         </div>
         <div id="general">
             <div id="contenedor">
                 <div id="lienzo">
-                    <div id="divInterno"></div>
+                    <div class="divInternoo" id="divInterno"></div>
+                    <div class="divInternoo2" id="divInterno2"></div>
+                    <div class="divInternoo3" id="divInterno3"></div>
+                    <div class="divInternoo4" id="divInterno4"></div>
                 </div>
                 <div id="Instrucciones">
-                    <p>
-                        <p>Para mover el punto</p> <br>
-                        <ul>
-                            <li>W-> Arriba</li><br>
-                            <li>A -> Izquierda</li><br>
-                            <li>S -> Derecha</li><br>
-                            <li>S -> Abajo</li><br>
-                            <li>Enter -> Hallar posición punto</li>
+                        <div>
+                            <ul>
+                                <li>Punto 1: <div class="divInterno"></div></li>
+                                <li>W -> Arriba</li>
+                                <li>A -> Izquierda</li>
+                                <li>S -> Abajo</li>
+                                <li>D -> Derecha</li>
+                                <li>Enter -> Hallar posición punto</li>
                         </ul>
-                    </p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Punto 2: <div class="divInterno2"></div></li>
+                                <li>T -> Arriba</li>
+                                <li>F -> Izquierda</li>
+                                <li>G -> Abajo</li>
+                                <li>H -> Derecha</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Punto 3: <div class="divInterno3"></div></li>
+                                <li>J -> Arriba</li>
+                                <li>N-> Izquierda</li>
+                                <li>M -> Abajo</li>
+                                <li>, -> Derecha</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Punto 4: <div class="divInterno4"></div></li>
+                                <li>O -> Arriba</li>
+                                <li>K -> Izquierda</li>
+                                <li>L -> Abajo</li>
+                                <li>Ñ -> Derecha</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <button onclick="repetir()" class="botonesPanel" id="botonCoordenadas" style="display: none;">Cambiar medidas lienzo</button>
     <script src="./script.js"></script>
 </body>
 </html>

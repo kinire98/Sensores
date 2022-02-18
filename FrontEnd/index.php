@@ -23,6 +23,8 @@
                 <input type="number" name="width" id="width" step="50" min="500" max="900"><br>
                 <label for="height">Alto del recipiente (en píxeles):</label><br>
                 <input type="number" name="height" id="height" step="50" min="500" max="900"><br>
+                <label for="number">Número de puntos:</label><br>
+                <input type="number" name="number" id="number" min="1" max="4">
                 <label for="ref">Referencia</label><br>
                 <input type="text" name="ref" id="ref">
                 <span id="error"></span>
@@ -34,24 +36,15 @@
             <h2>Selecciona un movimiento</h2>
             <select name="movimientoBBDD" id="movimientoBBDD">
                 <?php
-                    $sql = "SELECT * FROM sensores";
+                    $sql = "SELECT * FROM sensores_2";
                     $result = $conn->query($sql);
                         if ($result->num_rows > 0){
                             $value = -1;
-                            $lista_longitud1 = [];
-                            $lista_longitud2 = [];
-                            $lista_longitud3 = [];
-                            $lista_longitud4 = [];
 
-                            $lista_movimientos = [];
-
-                            $lista_angulo1 = [];
-                            $lista_angulo2 = [];
-                            $lista_angulo3 = [];
-                            $lista_angulo4 = [];
-
-                            $lista_abscisa = [];
-                            $lista_oordenada = [];
+                            $lista_movimientos1 = [];
+                            $lista_movimientos2 = [];
+                            $lista_movimientos3 = [];
+                            $lista_movimientos4 = [];
 
                             $lista_altura = [];
                             $lista_anchura = [];
@@ -60,20 +53,12 @@
 
                             while($row = $result->fetch_assoc()){
                                 $value = $value + 1;
-                                array_push($lista_longitud1, $row['longitud1']);
-                                array_push($lista_longitud2, $row['longitud2']);
-                                array_push($lista_longitud3, $row['longitud3']);
-                                array_push($lista_longitud4, $row['longitud4']);
 
-                                array_push($lista_movimientos, $row['movimientos']);
+                                array_push($lista_movimientos1, $row['movimientos1']);
+                                array_push($lista_movimientos2, $row['movimientos2']);
+                                array_push($lista_movimientos3, $row['movimientos3']);
+                                array_push($lista_movimientos4, $row['movimientos4']);
 
-                                array_push($lista_longitud1, $row['angulo1']);
-                                array_push($lista_longitud1, $row['angulo2']);
-                                array_push($lista_longitud1, $row['angulo3']);
-                                array_push($lista_longitud1, $row['angulo4']);
-
-                                array_push($lista_abscisa, $row['abscisa']);
-                                array_push($lista_oordenada, $row['oordenada']);
 
                                 array_push($lista_altura, $row['altura']);
                                 array_push($lista_anchura, $row['anchura']);
@@ -94,29 +79,64 @@
         <div id="general">
             <div id="contenedor">
                 <div id="lienzo">
-                    <div id="divInterno"></div>
+                    <div class="divInternoo" id="divInterno"></div>
+                    <div class="divInternoo2" id="divInterno2"></div>
+                    <div class="divInternoo3" id="divInterno3"></div>
+                    <div class="divInternoo4" id="divInterno4"></div>
                 </div>
-                
                 <div id="Instrucciones">
-                    <p>
-                        Para mover el punto <br>
-                        <ul>
-                            <li>w-> Arriba</li><br>
-                            <li>a -> Izquierda</li><br>
-                            <li>s -> Derecha</li><br>
-                            <li>d -> Abajo</li><br>
-                            <li>Enter -> Hallar posición punto (Si se presiona, no se podrá mover el punto)</li>
+                        <div>
+                            <ul>
+                                <li>Punto 1: <div class="divInterno"></div></li>
+                                <li>W -> Arriba</li>
+                                <li>A -> Izquierda</li>
+                                <li>S -> Abajo</li>
+                                <li>D -> Derecha</li>
+                                <li>Enter -> Hallar posición punto</li>
                         </ul>
-                    </p>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Punto 2: <div class="divInterno2"></div></li>
+                                <li>T -> Arriba</li>
+                                <li>F -> Izquierda</li>
+                                <li>G -> Abajo</li>
+                                <li>H -> Derecha</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Punto 3: <div class="divInterno3"></div></li>
+                                <li>J -> Arriba</li>
+                                <li>N-> Izquierda</li>
+                                <li>M -> Abajo</li>
+                                <li>, -> Derecha</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li>Punto 4: <div class="divInterno4"></div></li>
+                                <li>O -> Arriba</li>
+                                <li>K -> Izquierda</li>
+                                <li>L -> Abajo</li>
+                                <li>Ñ -> Derecha</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <button onclick="repetir()" class="botonesPanel" id="botonCoordenadas" style="display: none;">Cambiar medidas lienzo</button>
+        
     <script src="script.js"></script>
     <script src="../jquery.min.js"></script>
     <script src="../font-awesome.js"></script>
     <script>
-        var lista_movimientosJS = <?php echo json_encode($lista_movimientos); ?>;
+        var lista_movimientos1JS = <?php echo json_encode($lista_movimientos1); ?>;
+        var lista_movimientos2JS = <?php echo json_encode($lista_movimientos2); ?>;
+        var lista_movimientos3JS = <?php echo json_encode($lista_movimientos3); ?>;
+        var lista_movimientos4JS = <?php echo json_encode($lista_movimientos4); ?>;
+
         var lista_referenciaJS = <?php echo json_encode($lista_referencia); ?>;
 
         var lista_alturaJS = <?php echo json_encode($lista_altura); ?>;

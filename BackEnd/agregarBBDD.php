@@ -2,36 +2,27 @@
 require "conexion.php";
 
 // -- AÑADE MOVIMIENTO A LA BBDD
-if(isset($_POST['movimientos'])){
+if(isset($_POST['movimientos1'])){
     
-    $longitud1 = $_POST['longitud1'];
-    $longitud2 = $_POST['longitud2'];
-    $longitud3 = $_POST['longitud3'];
-    $longitud4 = $_POST['longitud4'];
-    $movimientos = $_POST['movimientos'];
-    $angulo1 = $_POST['angulo1'];
-    $angulo2 = $_POST['angulo2'];
-    $angulo3 = $_POST['angulo3'];
-    $angulo4 = $_POST['angulo4'];
-    $abscisa = $_POST['abscisa'];
-    $oordenada = $_POST['oordenada'];
+    $nPuntos = $_POST['nPuntos'];
+    $movimientos1 = $_POST['movimientos1'];
+    $movimientos2 = $_POST['movimientos2'];
+    $movimientos3 = $_POST['movimientos3'];
+    $movimientos4 = $_POST['movimientos4'];
     $altura = $_POST['altura'];
     $anchura = $_POST['anchura'];
     $referencia = $_POST['referencia'];
 
-    $sql = "SELECT * FROM sensores WHERE referencia = '$referencia'";
+    $sql = "SELECT * FROM sensores_2 WHERE referencia = '$referencia'";
     $result = $conn->query($sql);
         if ($result->num_rows > 0){
-            $sql = "DELETE FROM sensores WHERE referencia = '$referencia'";
+            $sql = "DELETE FROM sensores_2 WHERE referencia = '$referencia'";
             if(mysqli_query($conn, $sql)){}
         }
 
-    $sql = "INSERT INTO sensores (longitud1, longitud2, longitud3, longitud4, movimientos, angulo1, angulo2, angulo3, angulo4, abscisa, oordenada, altura, anchura, referencia) VALUES ('$longitud1', '$longitud2', '$longitud3', '$longitud4', '$movimientos', '$angulo1', '$angulo2', '$angulo3', '$angulo4', '$abscisa', '$oordenada', '$altura', '$anchura', '$referencia')";
+    $sql = "INSERT INTO sensores_2 ( nPuntos, movimientos1, movimientos2, movimientos3, movimientos4, altura, anchura, referencia) VALUES ('$nPuntos', '$movimientos1', '$movimientos2', '$movimientos3', '$movimientos4', '$altura', '$anchura', '$referencia')";
     if(mysqli_query($conn, $sql)){}
 }
-
-
-
 
 
 // 
