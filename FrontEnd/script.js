@@ -480,6 +480,7 @@ function escribirCoordenadas (numPts) {
     })
 
 }
+
 if(verMovimiento == 0){
 setInterval(() => {
     if (document.getElementById('inferior').style.display == 'none' && !comprobarDistancia) {
