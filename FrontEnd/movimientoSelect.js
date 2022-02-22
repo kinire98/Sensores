@@ -272,11 +272,11 @@ function movimientoSelect(){
             let yIzda =  ((altura**2)-(sensor0y**2)+(sensor00**2))/(2*altura);//Este sistema se repite 4 veces, una por cada uno de los lados del contenedor, para así utilizar todos los sensores
             let xIzda = Math.abs(((altura-yIzda)**2)-(sensor0y**2));// y obtener el resultado más preciso posible
             xIzda = Math.sqrt(xIzda);
-            let xArriba = anchura-((anchura**2)-(sensor0y**2)+(sensorxy**2))/(2*anchura);
-            let c2 = -(sensorxy**2)+(anchura**2)-(2*anchura*xArriba)+(xArriba**2)+(altura**2);
-            let yArriba = (-(-2*altura)-Math.sqrt(((-2*altura)**2)-(4*c2)))/2;
+            let xArriba = anchura-((anchura**2)-(sensor0y**2)+(sensorxy**2))/(2*anchura); //Para estos puntos, como había dos variables que había dos variables al cuadrado (una se conoce y otra no, en el otro punto al revés)
+            let c2 = -(sensorxy**2)+(anchura**2)-(2*anchura*xArriba)+(xArriba**2)+(altura**2);//Tuve que cambiar la fórmula ligeramente. Especialmente la c. Como había muchos datos en esta c lo puse en una variable a parte para simplificar la fórmula siguiente
+            let yArriba = (-(-2*altura)-Math.sqrt(((-2*altura)**2)-(4*c2)))/2;//Esto es una ecuación cuadrática. Con esto ya se pueden obtener los puntos más problemáticos
             let yDcha = ((altura**2)-(sensorxy**2)+(sensorx0**2))/(2*altura);
-            let c = -(sensorx0**2)+(yDcha**2)+(anchura**2);
+            let c = -(sensorx0**2)+(yDcha**2)+(anchura**2);//Esto es lo mismo, pero para el otro punto cambiando los datos para calcularlo
             let xDcha = (-(-2*anchura)-Math.sqrt(((-2*anchura)**2)-(4*c)))/2;
             
             
@@ -288,9 +288,12 @@ function movimientoSelect(){
             mediaX = Number(mediaX.toFixed(2))
             mediaY = Number(mediaY.toFixed(2))
             
+    
+            //Cálculo coordenadas polares
+            //Tenemos la hipotenuso y el cateto opuesto del ángulo que queremos calcular
             let alfa = Math.asin(mediaY/sensor00); //Como el seno de un ángulo es el cateto opuesto entre la hipotenusa
             let beta = Math.asin ((anchura-mediaX)/sensorx0);//y tengo el cateto opuesto y la hipotenusa, los dividó
-            let gamma = Math.asin ((altura-mediaY)/sensorxy);//Y con su resultado hago el arco seno (asen), con el 
+            let gamma = Math.asin ((altura-mediaY)/sensorxy);//Y con su resultado hago el arco seno (arcsen), con el 
             let delta = Math.asin (mediaX/sensor0y);//cual obtengo el ángulo
             
             alfa = (180*alfa)/Math.PI;//Como el ángulo lo dan en radianes, lo que hay que hacer es una simple regla de tres
@@ -307,10 +310,10 @@ function movimientoSelect(){
             beta = Number(beta.toFixed(2));
             gamma = Number(gamma.toFixed(2));
             delta = Number(delta.toFixed(2));
-            return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];
+            return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];//Aquí se devuelven los valores calculados en forma de matriz, para poder devolver todos los valores
         }
     }
-    let punto1 = new CalculoCoordenadas();
+    let punto1 = new CalculoCoordenadas(); //Declaración de las instancias de la clase
     let punto2 = new CalculoCoordenadas();
     let punto3 = new CalculoCoordenadas();
     let punto4 = new CalculoCoordenadas();
@@ -327,12 +330,12 @@ function movimientoSelect(){
 
             if (document.getElementById('inferior').style.display == 'none' && !comprobarDistancia) {
                 let coordenadasPunto1 = punto1.calculoCoordenadas('divInterno');
-                let coordenadasPunto2 = punto2.calculoCoordenadas('divInterno2');
+                let coordenadasPunto2 = punto2.calculoCoordenadas('divInterno2');//Cálculo de las coordenadas para cada una de las instancias de la clase
                 let coordenadasPunto3 = punto3.calculoCoordenadas('divInterno3');
                 let coordenadasPunto4 = punto4.calculoCoordenadas('divInterno4');
                 
                 
-                switch (numPts) {
+                switch (numPts) {//Con este switch se comprueba el número de puntos seleccionados para rastrear para que no salgan las coordenadas de puntos que no se están rastreando
                     case 1:
                         document.getElementById('botonCoordenadas').style.display = 'block'
                         document.getElementById('Instrucciones').innerHTML = `
@@ -422,7 +425,7 @@ function movimientoSelect(){
                             </div><br>
                         `
                         break;
-                    case 4:
+                    case 4://Como sse devuelven los datos en forma de matriz se van escibiendo cada uno en sus respectivos apartados
                         document.getElementById('botonCoordenadas').style.display = 'block'
                         document.getElementById('Instrucciones').innerHTML = `
                         <h1>HOLA</h1>
