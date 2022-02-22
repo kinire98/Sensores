@@ -310,10 +310,10 @@ function movimientoSelect(){
             return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];
         }
     }
-    let punto1 = new CalculoCoordenadas('divInterno');
-    let punto2 = new CalculoCoordenadas('divInterno2');
-    let punto3 = new CalculoCoordenadas('divInterno3');
-    let punto4 = new CalculoCoordenadas('divInterno4');
+    let punto1 = new CalculoCoordenadas();
+    let punto2 = new CalculoCoordenadas();
+    let punto3 = new CalculoCoordenadas();
+    let punto4 = new CalculoCoordenadas();
 
 
 
@@ -326,10 +326,10 @@ function movimientoSelect(){
             }
 
             if (document.getElementById('inferior').style.display == 'none' && !comprobarDistancia) {
-                let coordenadasPunto1 = punto1.calculoCoordenadas();
-                let coordenadasPunto2 = punto2.calculoCoordenadas();
-                let coordenadasPunto3 = punto3.calculoCoordenadas();
-                let coordenadasPunto4 = punto4.calculoCoordenadas();
+                let coordenadasPunto1 = punto1.calculoCoordenadas('divInterno');
+                let coordenadasPunto2 = punto2.calculoCoordenadas('divInterno2');
+                let coordenadasPunto3 = punto3.calculoCoordenadas('divInterno3');
+                let coordenadasPunto4 = punto4.calculoCoordenadas('divInterno4');
                 
                 
                 switch (numPts) {
