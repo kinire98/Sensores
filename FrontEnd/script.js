@@ -442,10 +442,10 @@ class CalculoCoordenadas {
         return [mediaX,mediaY,sensor00,sensorx0,sensor0y,sensorxy,alfa,beta,gamma,delta];//Aquí se devuelven los valores calculados en forma de matriz, para poder devolver todos los valores
     }
 }
-let punto1 = new CalculoCoordenadas();//Declaración de las instancias de la clase
-let punto2 = new CalculoCoordenadas();
-let punto3 = new CalculoCoordenadas();
-let punto4 = new CalculoCoordenadas();
+let punto1 = new CalculoCoordenadas('divInterno');//Declaración de las instancias de la clase
+let punto2 = new CalculoCoordenadas('divInterno2');
+let punto3 = new CalculoCoordenadas('divInterno3');
+let punto4 = new CalculoCoordenadas('divInterno4');
 
 
 function escribirCoordenadas (numPts) {
@@ -485,10 +485,10 @@ function escribirCoordenadas (numPts) {
 if(verMovimiento == 0){
 setInterval(() => {
     if (document.getElementById('inferior').style.display == 'none' && !comprobarDistancia) {
-        let coordenadasPunto1 = punto1.calculoCoordenadas('divInterno');//Cálculo de las coordenadas para cada una de las instancias de la clase
-        let coordenadasPunto2 = punto2.calculoCoordenadas('divInterno2');
-        let coordenadasPunto3 = punto3.calculoCoordenadas('divInterno3');
-        let coordenadasPunto4 = punto4.calculoCoordenadas('divInterno4');
+        let coordenadasPunto1 = punto1.calculoCoordenadas();//Cálculo de las coordenadas para cada una de las instancias de la clase
+        let coordenadasPunto2 = punto2.calculoCoordenadas();
+        let coordenadasPunto3 = punto3.calculoCoordenadas();
+        let coordenadasPunto4 = punto4.calculoCoordenadas();
         let numPts = parseInt(document.getElementById('number').value);
         switch (numPts) { //Con este switch se comprueba el número de puntos seleccionados para rastrear para que no salgan las coordenadas de puntos que no se están rastreando
             case 1:
