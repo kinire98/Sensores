@@ -35,5 +35,5 @@ Con estas **_Se calcularon las coordenadas estándar para los puntos y las coord
 - **1 Escribir la referencia del movimiento en el cuadro de texto que pone _Referencia_ y pulsar el botón**
 
 
-Para poder utilizar el programa, sirve cualquier ordenador que soporte un navegador que de ***soporte al estándar ES6***, debido a la clase que está en el código ya que si se pone a funcionar en~~IE11~~, no funcionará de manera correcta el código ya que no podrá calcular las coordenadas. 
+Para poder utilizar el programa, sirve cualquier ordenador que soporte un navegador que de ***soporte al estándar ES6***, debido a la clase que está en el código ya que si se pone a funcionar en ~~IE11~~, no funcionará de manera correcta el código ya que no podrá calcular las coordenadas. 
 Si se pone a funcionar en un ordenador con un navegador que soporte ES6 no debería haber ningún problema. **(Ejemplos de navegadores que soportan ES6, _Google Chrome, Microsoft Edge, Opera, Mozilla Firefox o Brave_)**
