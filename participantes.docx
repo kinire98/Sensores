@@ -1,0 +1,17 @@
+Iker:
+-FrontEnd
+    -Cálculo de coordenadas
+    -Fórmulas matemáticas
+    -Parte de los estilos
+    -Uso Git y GitHub
+David:
+-BackEnd
+    -Importación de movimiento de bases de datos
+    -Envío de movimiento a la base de datos
+    -La otra parte de los estilos
+
+Ideas principales llevadas a cabo:
+-Los propuestos por el proyecto
+-Varios puntos simultáneos de los cuáles se obtienen las coordenadas en tiempo real
+-Importación y exportación de los movimientos de/a una base de datos
+-Dimesiones del lienzo por el que se mueven los puntos variables
