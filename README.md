@@ -7,32 +7,32 @@ Con estas **_Se calcularon las coordenadas estándar para los puntos y las coord
 
 ***Instrucciones de uso:***
 **Para generar un nuevo movimiento:**
-**1-Seleccionar las medidas del lienzo, tanto alto como ancho _Solo se puede poner un alto o ancho de un mínimo de 500 píxeles y un máximo de 900 píxeles. Además tiene que ser múltiplo de 50_. También tendrás que seleccionar el número de puntos que quieres que aparezcan en el lienzo**
-*2-Ponerle una referencia a dicho movimiento**NO SE PUEDE UTILIZAR UNA REFERENCIA YA EN USO***
-*3-Presionar botón de generar lienzo. Si los pasos anteriores son correctos se generará el lienzo con el movmiento*
-**4- Para mover el punto 1:**
+**-1 Seleccionar las medidas del lienzo, tanto alto como ancho _Solo se puede poner un alto o ancho de un mínimo de 500 píxeles y un máximo de 900 píxeles. Además tiene que ser múltiplo de 50_. También tendrás que seleccionar el número de puntos que quieres que aparezcan en el lienzo**
+*-2 Ponerle una referencia a dicho movimiento**NO SE PUEDE UTILIZAR UNA REFERENCIA YA EN USO***
+*-3 Presionar botón de generar lienzo. Si los pasos anteriores son correctos se generará el lienzo con el movmiento*
+**-4 Para mover el punto 1:**
     ***W-> ARRIBA***
     ***A-> IZQUIERDA***
     ***S -> ABAJO***
     ***D -> DERECHA***
-**5- Para mover el punto 2:**
+**-5 Para mover el punto 2:**
     ***T-> ARRIBA***
     ***F-> IZQUIERDA***
     ***G -> ABAJO***
     ***H -> DERECHA***
-**6- Para mover el punto 3:**
+**-6 Para mover el punto 3:**
     ***J-> ARRIBA***
     ***N-> IZQUIERDA***
     ***M -> ABAJO***
     ***, -> DERECHA***
-**7- Para mover el punto 4:**
+**-7 Para mover el punto 4:**
     ***O-> ARRIBA***
     ***K-> IZQUIERDA***
     ***L -> ABAJO***
     ***Ñ -> DERECHA***
-**8-Para guardar el movimiento en la base de datos se debe presionar Enter._Cuando se presione Enter ya no se podrán mover los puntos_**
+**-8 Para guardar el movimiento en la base de datos se debe presionar Enter._Cuando se presione Enter ya no se podrán mover los puntos_**
 **Para importar un movimiento:**
-**1-Escribir la referencia del movimiento en el cuadro de texto que pone _Referencia_ y pulsar el botón**
+**-1 Escribir la referencia del movimiento en el cuadro de texto que pone _Referencia_ y pulsar el botón**
 
 
 --- CSS QUE DE MOMENTO NO FUNCIONA ----
