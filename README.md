@@ -37,3 +37,8 @@ Con estas **_Se calcularon las coordenadas estándar para los puntos y las coord
 
 Para poder utilizar el programa, sirve cualquier ordenador que soporte un navegador que de ***soporte al estándar ES6***, debido a la clase que está en el código ya que si se pone a funcionar en ~~IE11~~, no funcionará de manera correcta el código ya que no podrá calcular las coordenadas. No implementamos funcionalidad de este navegador por su escaso uso en la actualidad. 
 Si se pone a funcionar en un ordenador con un navegador que soporte ES6 no debería haber ningún problema. **(Ejemplos de navegadores que soportan ES6, _Google Chrome, Microsoft Edge, Opera, Mozilla Firefox o Brave_)**
+Para que la pagina web funcione:
+- **1 Tendrá que añadir a Mysql Workbench la carpeta 'sensores' la ruta para añadir la carpeta se encuentra en Xampp   Ruta: 'xampp\mysql\data'** 
+- **2 Aquí pegas la carpeta con el código**
+- **3 También deberá pegar la carpeta del proyecto(SensoresAweb) en   Ruta: 'xampp\htdocs'  abres el puerto Apache y mySQL y en su navegador busque localhost/SensoresAweb/FrontEnd.**  
+- **4 La página web ya funcionará correctamente**
